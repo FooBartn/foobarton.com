@@ -20,7 +20,7 @@ paginate = 10
 
 [params]
     # Blog subtitle which appears below blog title. Supports markdown.
-    subtitle = "Turning Caffeine Into Code and Clouds"
+    subtitle = "Maintaining a Well-Balanced Diet of Code, Clouds, and Caffeine. Mostly Caffeine."
 
     # Content types which are included in home page recent posts list.
     mainSections = ["posts"]

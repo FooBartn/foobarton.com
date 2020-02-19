@@ -3,6 +3,7 @@ title: "AZ-301 Study Guide"
 date: 2018-03-18T02:01:58+05:30
 description: ""
 tags: [azure, study, certification, microsoft]
+draft: true
 ---
 
 # Determine Workload Requirements
