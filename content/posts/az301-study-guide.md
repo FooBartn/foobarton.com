@@ -47,8 +47,22 @@ draft: true
 
 # Optimize Consumption Strategy
 
-[Optimize App Service Costs](https://app.pluralsight.com/library/courses/microsoft-azure-consumption-strategy-optimizing/table-of-contents):
+[Cost Management](https://app.pluralsight.com/library/courses/microsoft-azure-consumption-strategy-optimizing/table-of-contents)
+- Not necessarily cost minimization
+- Don't deliver a solution that is lower cost at the expense of business requirements
+- Success is measured against business requirements
+- Requirements are both technical and non-technical
+- Architecture, monitoring & visibility are necessary
+- In-depth Azure solution knowledge needed
+- Regularly reassess as services and requirements change
+- Make use of all the Azure tools available
 
-- Cost Management (Not necessarily cost minimization)
-- 
+[Optimize Storage Costs]():
 
+[Optimize Compute Costs]():
+
+[Optimize Network Costs]():
+
+[Optimize App Service Costs]():
+
+[Optimize Identity Costs]():
