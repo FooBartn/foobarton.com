@@ -37,7 +37,7 @@ But what if you built a library? Maybe one that interacts with an API? How do yo
 
 > You can also use ```dotnet user-secrets init``` from within the project directory if you're not using Visual Studio.
 
-Now you have all the necessary bits in place. What's next? This can be a little confusing since the documentation for User Secrets only refers to ASP.NET Core -- and for that you don't need to do anything else to get it working at this point except add data to your secrets file. 
+Now you have all the necessary bits in place. What's next? This can be a little confusing since the documentation for User Secrets only refers to ASP.NET Core -- and for that you don't need to do anything else to get it working except add data to your secrets file. 
 
 But what about console applications and test projects?
 
@@ -75,7 +75,7 @@ Alright, so now how do we prove that, given an apiKey, AddUser actually adds a u
 
 Integration Tests.
 
-Keep in mind that at this level I'm not looking for efficiency. I don't care so much *how* it works, only that it *works*. i.e. The result is what I expect. So do your best to ignore how simplified and lacking in content the example code above is. 
+Keep in mind that at this level I'm not looking for efficiency. I don't care so much *how* it works, only that *it works*. i.e. The result is what I expect. So do your best to ignore how simplified and lacking in content the example code above is. 
 
 Let's see the not-so-secure way first:
 

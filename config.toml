@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "http://www.foobarton.com/"
 languageCode = "en-us"
 title = "FOOBARTON"
 theme = "ezhil"
@@ -11,7 +11,7 @@ pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
 # Your Google analytics code.
-googleAnalytics = "UA-123-45"
+#googleAnalytics = "UA-123-45"
 # Your Disqus sortname.
 #disqusShortname = "localhost"
 
@@ -90,4 +90,4 @@ url = "https://www.linkedin.com/in/bartonjoshua/"
 
 # Enable tags.
 [taxonomies]
-   tag = "tags"
+tag = "tags"
