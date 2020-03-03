@@ -1,17 +1,17 @@
 ---
 title: "C# Testing With User Secrets"
-date: 2020-02-15T23:12:53-06:00
+date: 2020-02-21T23:12:53-06:00
 description: "A quick guide on how to get User Secrets into your tests -- and your sensitive data out of your code!"
-tags: [c#, .net, microsoft, testing]
+tags: [c#, .net, dev]
 ---
 
-# TLDR
+## TLDR
 
 Use ConfigurationBuilder, AddUserSecrets, and IConfiguration.GetValue("key") to get access to User Secrets from any .Net Core project. No complex procedure required! And minimal scarring!*
 
 > *These claims have not been evaluated by any legitimate agency. Read at your own risk.
 
-# Problem
+## Problem
 
 "Don't push sensitive material to the source code repository."
 
@@ -23,13 +23,13 @@ But what about Integration Testing?
 
 You know, the practice of making sure things that work separately also work *together*. That way you don't end up with something like this:
 
-![Two Unit Tests No Integration](/twounitnointegration.gif)
+![Two Unit Tests No Integration](/images/twounitnointegration.gif)
 
 But when interacting with different live systems you usually need credentials of some sort: an API key, a username and password, etc. So where do you put them? 
 
-You could use a file that you add to your .gitignore settings. But then your teammates have to make sure they do that too -- and that no one accidentally forgets. Because rewriting Git history sucks.
+You could use a file that you add to your .gitignore settings. But then your teammates have to make sure they do that too -- and that no one accidentally forgets. Because rewriting Git history **sucks**.
 
-# User Secrets
+## User Secrets
 
 With .Net Core you can use what are known as User Secrets. Since introduction this has been fairly easy to implement if you want to build an ASP.NET Core web application. ASP.NET Core does all the work for you.
 
@@ -41,7 +41,7 @@ Now you have all the necessary bits in place. What's next? This can be a little 
 
 But what about console applications and test projects?
 
-# .Net Core Library
+## .Net Core Library
 
 I'm going to focus on what an Xunit test project for a .Net Core Library would look like. Because it's the use case I came across that had very little documentation. Most of the examples I found had you build a whole ServiceCollection and set up Dependency Injection etc; and you could! But if you just want to use User Secrets, I can show you a much simpler way.
 
@@ -96,9 +96,9 @@ public class UserTests
 
 Assuming this library works the way we expect it to, this should result in a passing test. We added the user "Bob" and then checked to see that the user "Bob" was added. But now our API key is sitting there. Out in the open. For anyone with access to the code to see.
 
-![Danger, Will Robinson! Danger!](/dangerwillrobinson.gif)
+![Danger, Will Robinson! Danger!](/images/dangerwillrobinson.gif)
 
-# Using User Secrets
+## Using User Secrets
 
 How do we fix it? With a little re-**Configuration**, of course. Let's assume this is the contents of our User Secrets file:
 
@@ -147,4 +147,4 @@ Now when the ShouldAddUser() test runs, it will pull the _apiKey from the config
 
 Result? No sensitive data uploaded! Groot Happy Dance Time!
 
-![Dancing Groot](/dancinggroot.gif)
+![Dancing Groot](/images/dancinggroot.gif)

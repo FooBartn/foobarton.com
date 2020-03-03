@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FOOBARTON</title>
+    <link>https://www.foobarton.com/</link>
+    <description>Recent content on FOOBARTON</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Fri, 28 Feb 2020 16:42:37 -0600</lastBuildDate>
+    
+	<atom:link href="https://www.foobarton.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cisco Devnet Associate Study Guide</title>
+      <link>https://www.foobarton.com/posts/cisco-devnet-assoc-study-guide/</link>
+      <pubDate>Fri, 28 Feb 2020 16:42:37 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/posts/cisco-devnet-assoc-study-guide/</guid>
+      <description>1.0 Software Development and Design (15%) 1.1 Compare data formats (XML, JSON, YAML)   YAML (YAML Aint Markup Language)
+ Great for configuration files Uses indentation to define data structure, similar to how Python structures code. Purposefully made to be easy for humans to read/write Allows commenting YAML Example:  --- # Authors And Books authors: - first_name: Madeleine last_name: L&amp;#39;Engle books: - title: A Wrinkle In Time publisher: Ariel Books genres: - Young Adult - Science Fantasy pages: 218 publish_date: 1962-01-01 description: A Wrinkle in Time is the story of Meg Murry, a high-school-aged girl who is transported on an adventure through time and space with her younger brother Charles Wallace and her friend Calvin O&amp;#39;Keefe to rescue her father, a gifted scientist, from the evil forces that hold him prisoner on another planet.</description>
+    </item>
+    
+    <item>
+      <title>C# Testing With User Secrets</title>
+      <link>https://www.foobarton.com/posts/testing-with-user-secrets/</link>
+      <pubDate>Fri, 21 Feb 2020 23:12:53 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/posts/testing-with-user-secrets/</guid>
+      <description>TLDR Use ConfigurationBuilder, AddUserSecrets, and IConfiguration.GetValue(&amp;ldquo;key&amp;rdquo;) to get access to User Secrets from any .Net Core project. No complex procedure required! And minimal scarring!*
+ *These claims have not been evaluated by any legitimate agency. Read at your own risk.
+ Problem &amp;ldquo;Don&amp;rsquo;t push sensitive material to the source code repository.&amp;rdquo;
+Most developers are pretty familiar with this. Obviously, we don&amp;rsquo;t want our precious keys and passwords escaping into The Wild Wild Web and falling prey to some nefarious basement dwelling evil-doer named DarkCLIde.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://www.foobarton.com/about/</link>
+      <pubDate>Sun, 09 Feb 2020 14:35:34 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C# For PoSH Devs Part 1</title>
+      <link>https://www.foobarton.com/posts/csharp-for-posh-devs-p1/</link>
+      <pubDate>Tue, 29 May 2018 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.foobarton.com/posts/csharp-for-posh-devs-p1/</guid>
+      <description>UPDATES
+ 06.02.2018: Updated Basic Syntax Differences  @MarkeKraus recently pointed out that I probably missed a good chance to tell you about the differences in case sensitivity between C# and PowerShell. I added a little information in the syntax section that will hopefully help. Thanks, Mark!    Intro So you&amp;rsquo;re a PowerShell-er, but you&amp;rsquo;re interested in doing something with C#? Awesome! I&amp;rsquo;m here to help. I&amp;rsquo;m not going to go deep in the weeds in this series, but I&amp;rsquo;m going to see if I can get you from point A to point B with brief explanations inbetween.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>C# Testing With User Secrets - FOOBARTON</title><link rel="shortcut icon" href=/icons/favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="C# Testing With User Secrets" />
+<meta property="og:description" content="A quick guide on how to get User Secrets into your tests -- and your sensitive data out of your code!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.foobarton.com/posts/testing-with-user-secrets/" />
+<meta property="article:published_time" content="2020-02-21T23:12:53-06:00" />
+<meta property="article:modified_time" content="2020-02-21T23:12:53-06:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C# Testing With User Secrets"/>
+<meta name="twitter:description" content="A quick guide on how to get User Secrets into your tests -- and your sensitive data out of your code!"/>
+<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://www.foobarton.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://www.foobarton.com/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="https://www.foobarton.com/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<div class="top">
+		<h1 class="site-title">
+			<a href="https://www.foobarton.com/">FOOBARTON<span class="site-title-suffix">BLOG</span></a>
+		</h1>
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</div>
+	
+</div>
+
+		<div class="post-header">
+			<h1 class="title">C# Testing With User Secrets</h1>
+			<div class="meta">Posted at &mdash; Feb 21, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<h2 id="tldr">TLDR</h2>
+<p>Use ConfigurationBuilder, AddUserSecrets, and IConfiguration.GetValue(&ldquo;key&rdquo;) to get access to User Secrets from any .Net Core project. No complex procedure required! And minimal scarring!*</p>
+<blockquote>
+<p>*These claims have not been evaluated by any legitimate agency. Read at your own risk.</p>
+</blockquote>
+<h2 id="problem">Problem</h2>
+<p>&ldquo;Don&rsquo;t push sensitive material to the source code repository.&rdquo;</p>
+<p>Most developers are pretty familiar with this. Obviously, we don&rsquo;t want our precious keys and passwords escaping into The Wild Wild Web and falling prey to some nefarious basement dwelling evil-doer named DarkCLIde. <em>Obviously</em>.</p>
+<p>With Unit Testing this isn&rsquo;t a problem. Unit Tests are done in &ldquo;a vacuum&rdquo; of sorts. The entire purpose of a Unit Test is to rely on as few dependencies as possible and test one single &ldquo;Unit&rdquo; or function at a time.</p>
+<p>But what about Integration Testing?</p>
+<p>You know, the practice of making sure things that work separately also work <em>together</em>. That way you don&rsquo;t end up with something like this:</p>
+<p><img src="/images/twounitnointegration.gif" alt="Two Unit Tests No Integration"></p>
+<p>But when interacting with different live systems you usually need credentials of some sort: an API key, a username and password, etc. So where do you put them?</p>
+<p>You could use a file that you add to your .gitignore settings. But then your teammates have to make sure they do that too &ndash; and that no one accidentally forgets. Because rewriting Git history <strong>sucks</strong>.</p>
+<h2 id="user-secrets">User Secrets</h2>
+<p>With .Net Core you can use what are known as User Secrets. Since introduction this has been fairly easy to implement if you want to build an ASP.NET Core web application. ASP.NET Core does all the work for you.</p>
+<p>But what if you built a library? Maybe one that interacts with an API? How do you get the User Secrets working? Luckily, with one of the more recent updates, they added &ldquo;Manage User Secrets&rdquo; to the context menu of more than just ASP.NET Core projects. This makes initial set up much easier!</p>
+<blockquote>
+<p>You can also use <code>dotnet user-secrets init</code> from within the project directory if you&rsquo;re not using Visual Studio.</p>
+</blockquote>
+<p>Now you have all the necessary bits in place. What&rsquo;s next? This can be a little confusing since the documentation for User Secrets only refers to ASP.NET Core &ndash; and for that you don&rsquo;t need to do anything else to get it working except add data to your secrets file.</p>
+<p>But what about console applications and test projects?</p>
+<h2 id="net-core-library">.Net Core Library</h2>
+<p>I&rsquo;m going to focus on what an Xunit test project for a .Net Core Library would look like. Because it&rsquo;s the use case I came across that had very little documentation. Most of the examples I found had you build a whole ServiceCollection and set up Dependency Injection etc; and you could! But if you just want to use User Secrets, I can show you a much simpler way.</p>
+<p>Let&rsquo;s assume you&rsquo;ve written a library for interacting with an API that looks something like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#719e07">public</span> <span style="color:#719e07">class</span> <span style="color:#268bd2">MyApi</span>
+{
+    <span style="color:#719e07">private</span> <span style="color:#719e07">readonly</span> <span style="color:#dc322f">string</span> apiKey;
+
+    <span style="color:#719e07">public</span> MyApi(<span style="color:#dc322f">string</span> apiKey) {
+        _apiKey = apiKey;
+    } 
+
+    <span style="color:#719e07">public</span> <span style="color:#719e07">void</span> AddUser(User user) =&gt; <span style="color:#586e75">// Code to add user here
+</span><span style="color:#586e75"></span>    <span style="color:#719e07">public</span> IEnumerable&lt;User&gt; GetUsers() =&gt; <span style="color:#586e75">// Code to get users here
+</span><span style="color:#586e75"></span>}
+
+<span style="color:#719e07">public</span> <span style="color:#719e07">class</span> <span style="color:#268bd2">User</span> 
+{
+    <span style="color:#719e07">public</span> User(<span style="color:#dc322f">string</span> name) 
+    {
+        Name = name;
+    }
+
+    <span style="color:#719e07">public</span> <span style="color:#dc322f">string</span> Name { <span style="color:#719e07">get</span>; <span style="color:#719e07">set</span>; }
+}
+</code></pre></div><p>Alright, so now how do we prove that, given an apiKey, AddUser actually adds a user? and GetUsers actually gets the user you added?</p>
+<p>Integration Tests.</p>
+<p>Keep in mind that at this level I&rsquo;m not looking for efficiency. I don&rsquo;t care so much <em>how</em> it works, only that <em>it works</em>. i.e. The result is what I expect. So do your best to ignore how simplified and lacking in content the example code above is.</p>
+<p>Let&rsquo;s see the not-so-secure way first:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#719e07">public</span> <span style="color:#719e07">class</span> <span style="color:#268bd2">UserTests</span> 
+{
+    [Fact]
+    <span style="color:#719e07">public</span> <span style="color:#719e07">void</span> ShouldAddUser() {
+        <span style="color:#719e07">using</span> var myApi = <span style="color:#719e07">new</span> MyApi(<span style="color:#2aa198">&#34;1580gskg023t83t0ig0s&#34;</span>);
+        <span style="color:#dc322f">var</span> user = <span style="color:#719e07">new</span> User(<span style="color:#2aa198">&#34;Bob&#34;</span>);
+        myApi.AddUser(user);
+
+        <span style="color:#dc322f">var</span> users = myApi.GetUsers();
+        users.Any(x =&gt; x.Name == <span style="color:#2aa198">&#34;Bob&#34;</span>).Should().BeTrue();
+    }
+}
+</code></pre></div><p>Assuming this library works the way we expect it to, this should result in a passing test. We added the user &ldquo;Bob&rdquo; and then checked to see that the user &ldquo;Bob&rdquo; was added. But now our API key is sitting there. Out in the open. For anyone with access to the code to see.</p>
+<p><img src="/images/dangerwillrobinson.gif" alt="Danger, Will Robinson! Danger!"></p>
+<h2 id="using-user-secrets">Using User Secrets</h2>
+<p>How do we fix it? With a little re-<strong>Configuration</strong>, of course. Let&rsquo;s assume this is the contents of our User Secrets file:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#268bd2">&#34;ApiKey&#34;</span>: <span style="color:#2aa198">&#34;1580gskg023t83t0ig0s&#34;</span>
+}
+</code></pre></div><p>And now we&rsquo;ll modify our UserTests class to this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#719e07">public</span> <span style="color:#719e07">class</span> <span style="color:#268bd2">UserTests</span> 
+{
+    <span style="color:#719e07">private</span> <span style="color:#dc322f">string</span> _apiKey;
+
+    <span style="color:#719e07">public</span> UserTests() 
+    {
+        <span style="color:#dc322f">var</span> configuration = <span style="color:#719e07">new</span> ConfigurationBuilder()
+            .AddUserSecrets&lt;Settings&gt;()
+            .Build();
+
+        _apiKey = configuration.GetValue&lt;<span style="color:#dc322f">string</span>&gt;(<span style="color:#2aa198">&#34;ApiKey&#34;</span>);
+    }
+
+    [Fact]
+    <span style="color:#719e07">public</span> <span style="color:#719e07">void</span> ShouldAddUser() {
+        <span style="color:#719e07">using</span> var myApi = <span style="color:#719e07">new</span> MyApi(_apiKey);
+        <span style="color:#dc322f">var</span> user = <span style="color:#719e07">new</span> User(<span style="color:#2aa198">&#34;Bob&#34;</span>);
+        myApi.Add(user);
+
+        <span style="color:#dc322f">var</span> users = myApi.GetUsers();
+        users.Any(x =&gt; x.Name == <span style="color:#2aa198">&#34;Bob&#34;</span>).Should().BeTrue();
+    }
+}
+</code></pre></div><p>That&rsquo;s it!</p>
+<p>So what have we done here?</p>
+<ul>
+<li>We&rsquo;ve created a configuration so we could use the AddUserSecrets extension method.</li>
+<li>We used the configuration method for getting the value of the property &ldquo;ApiKey&rdquo;, which was added from the User Secrets file.</li>
+</ul>
+<p>Now when the ShouldAddUser() test runs, it will pull the _apiKey from the configuration a.k.a. your User Secrets file; a file which is outside the project path and so is in no danger of being checked in via source control.</p>
+<p>Result? No sensitive data uploaded! Groot Happy Dance Time!</p>
+<p><img src="/images/dancinggroot.gif" alt="Dancing Groot"></p>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/c">c#</a></li>
+								
+								<li><a href="/tags/.net">.net</a></li>
+								
+								<li><a href="/tags/dev">dev</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/FooBartn/HugoSourcery">Sourcery theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on FOOBARTON</title>
+    <link>https://www.foobarton.com/tags/</link>
+    <description>Recent content in Tags on FOOBARTON</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Fri, 28 Feb 2020 16:42:37 -0600</lastBuildDate>
+    
+	<atom:link href="https://www.foobarton.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cisco</title>
+      <link>https://www.foobarton.com/tags/cisco/</link>
+      <pubDate>Fri, 28 Feb 2020 16:42:37 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/tags/cisco/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dev</title>
+      <link>https://www.foobarton.com/tags/dev/</link>
+      <pubDate>Fri, 28 Feb 2020 16:42:37 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.foobarton.com/tags/python/</link>
+      <pubDate>Fri, 28 Feb 2020 16:42:37 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.net</title>
+      <link>https://www.foobarton.com/tags/.net/</link>
+      <pubDate>Fri, 21 Feb 2020 23:12:53 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/tags/.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c#</title>
+      <link>https://www.foobarton.com/tags/c#/</link>
+      <pubDate>Fri, 21 Feb 2020 23:12:53 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>powershell</title>
+      <link>https://www.foobarton.com/tags/powershell/</link>
+      <pubDate>Tue, 29 May 2018 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.foobarton.com/tags/powershell/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

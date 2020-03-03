@@ -1,7 +1,7 @@
-baseURL = "http://www.foobarton.com/"
+baseURL = "https://www.foobarton.com/"
 languageCode = "en-us"
 title = "FOOBARTON"
-theme = "ezhil"
+theme = "HugoSourcery"
 
 copyright = "© Copyright notice"
 
@@ -20,7 +20,7 @@ paginate = 10
 
 [params]
     # Blog subtitle which appears below blog title. Supports markdown.
-    subtitle = "Maintaining a Well-Balanced Diet of Code, Clouds, and Caffeine. Mostly Caffeine."
+    subtitle = "Maintaining a Well-Balanced Diet of Code, Clouds, and Caffeine."
 
     # Content types which are included in home page recent posts list.
     mainSections = ["posts"]
@@ -32,11 +32,7 @@ paginate = 10
     featherIconsCDN = true
 
     # Specify favicon (icons/i.png maps to static/icons/i.png). No favicon if not defined.
-    favicon = "icons/myicon.png"
-
-    # Switch to dark mode or auto detect mode from OS (Optional).
-    # "dark" will set mode to dark and "auto" will switch to dark mode if OS is in dark mode.
-    mode = "auto" # "dark" or "auto"
+    favicon = "/icons/favicon.ico"
 
     # Custom CSS added to default styles. Files added to `static` folder is copied as it is to
     # root by Hugo. For example if you have custom CSS file under `static/css/custom.css` then
@@ -87,6 +83,11 @@ url = "https://twitter.com/foobartn"
 name = "LinkedIn"
 icon = "linkedin"
 url = "https://www.linkedin.com/in/bartonjoshua/"
+
+[[params.social]]
+name = "RSS"
+icon = "rss"
+url = "/index.xml"
 
 # Enable tags.
 [taxonomies]

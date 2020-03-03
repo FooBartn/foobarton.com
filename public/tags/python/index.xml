@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on FOOBARTON</title>
+    <link>https://www.foobarton.com/tags/python/</link>
+    <description>Recent content in python on FOOBARTON</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Fri, 28 Feb 2020 16:42:37 -0600</lastBuildDate>
+    
+	<atom:link href="https://www.foobarton.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cisco Devnet Associate Study Guide</title>
+      <link>https://www.foobarton.com/posts/cisco-devnet-assoc-study-guide/</link>
+      <pubDate>Fri, 28 Feb 2020 16:42:37 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/posts/cisco-devnet-assoc-study-guide/</guid>
+      <description>1.0 Software Development and Design (15%) 1.1 Compare data formats (XML, JSON, YAML)   YAML (YAML Aint Markup Language)
+ Great for configuration files Uses indentation to define data structure, similar to how Python structures code. Purposefully made to be easy for humans to read/write Allows commenting YAML Example:  --- # Authors And Books authors: - first_name: Madeleine last_name: L&amp;#39;Engle books: - title: A Wrinkle In Time publisher: Ariel Books genres: - Young Adult - Science Fantasy pages: 218 publish_date: 1962-01-01 description: A Wrinkle in Time is the story of Meg Murry, a high-school-aged girl who is transported on an adventure through time and space with her younger brother Charles Wallace and her friend Calvin O&amp;#39;Keefe to rescue her father, a gifted scientist, from the evil forces that hold him prisoner on another planet.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Cisco Devnet Associate Study Guide - FOOBARTON</title><link rel="shortcut icon" href=/icons/favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Cisco Devnet Associate Study Guide" />
+<meta property="og:description" content="Looking to pass the Cisco DevNet Associate Exam? I&#39;ve compiled a few notes! -- Incomplete --" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.foobarton.com/posts/cisco-devnet-assoc-study-guide/" />
+<meta property="article:published_time" content="2020-02-28T16:42:37-06:00" />
+<meta property="article:modified_time" content="2020-02-28T16:42:37-06:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cisco Devnet Associate Study Guide"/>
+<meta name="twitter:description" content="Looking to pass the Cisco DevNet Associate Exam? I&#39;ve compiled a few notes! -- Incomplete --"/>
+<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://www.foobarton.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://www.foobarton.com/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="https://www.foobarton.com/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<div class="top">
+		<h1 class="site-title">
+			<a href="https://www.foobarton.com/">FOOBARTON<span class="site-title-suffix">BLOG</span></a>
+		</h1>
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</div>
+	
+</div>
+
+		<div class="post-header">
+			<h1 class="title">Cisco Devnet Associate Study Guide</h1>
+			<div class="meta">Posted at &mdash; Feb 28, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<h2 id="10-software-development-and-design-15">1.0 Software Development and Design (15%)</h2>
+<h3 id="11-compare-data-formats-xml-json-yaml">1.1 Compare data formats (XML, JSON, YAML)</h3>
+<ul>
+<li>
+<p>YAML (YAML Aint Markup Language)</p>
+<ul>
+<li>Great for configuration files</li>
+<li>Uses indentation to define data structure, similar to how Python structures code.</li>
+<li>Purposefully made to be easy for humans to read/write</li>
+<li>Allows commenting</li>
+<li>YAML Example:</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  --- <span style="color:#586e75"># Authors And Books</span>
+  <span style="color:#719e07">authors</span>:
+    <span style="color:#2aa198">-
+</span><span style="color:#2aa198">     </span><span style="color:#2aa198"> </span><span style="color:#2aa198">first_name: Madeleine</span>
+      <span style="color:#719e07">last_name</span>: L<span style="color:#2aa198">&#39;Engle
+</span><span style="color:#2aa198">      books:
+</span><span style="color:#2aa198">          -
+</span><span style="color:#2aa198">            title: A Wrinkle In Time
+</span><span style="color:#2aa198">            publisher: Ariel Books
+</span><span style="color:#2aa198">            genres:
+</span><span style="color:#2aa198">              -  Young Adult
+</span><span style="color:#2aa198">              -  Science Fantasy
+</span><span style="color:#2aa198">            pages: 218
+</span><span style="color:#2aa198">            publish_date: 1962-01-01
+</span><span style="color:#2aa198">            description: A Wrinkle in Time is the story of Meg Murry, a high-school-aged girl who is transported on an adventure through time and space with her younger brother Charles Wallace and her friend Calvin O&#39;</span>Keefe to rescue her father, a gifted scientist, from the evil forces that hold him prisoner on another planet.
+</code></pre></div></li>
+<li>
+<p>JSON (JavaScript Object Notation)</p>
+<ul>
+<li>Great for serialized data &ndash; communication between APIs</li>
+<li>Fairly easy to read. A little more difficult to write correctly.</li>
+<li>Uses {} to denote objects, [] to denote arrays, etc. More &ldquo;programmatical&rdquo; in nature.</li>
+<li>JSON Example:</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#268bd2">&#34;authors&#34;</span>: [
+    {
+      <span style="color:#268bd2">&#34;first_name&#34;</span>: <span style="color:#2aa198">&#34;Madeleine&#34;</span>,
+      <span style="color:#268bd2">&#34;last_name&#34;</span>: <span style="color:#2aa198">&#34;L&#39;Engle&#34;</span>,
+      <span style="color:#268bd2">&#34;books&#34;</span>: [
+          {
+              <span style="color:#268bd2">&#34;title&#34;</span>: <span style="color:#2aa198">&#34;A Wrinkle In Time&#34;</span>,
+              <span style="color:#268bd2">&#34;publisher&#34;</span>: <span style="color:#2aa198">&#34;Ariel Books&#34;</span>,
+              <span style="color:#268bd2">&#34;genres&#34;</span>: [
+                  <span style="color:#2aa198">&#34;Young Adult&#34;</span>,
+                  <span style="color:#2aa198">&#34;Science Fantasy&#34;</span>
+              ],
+              <span style="color:#268bd2">&#34;pages&#34;</span>: <span style="color:#2aa198">218</span>,
+              <span style="color:#268bd2">&#34;publish_date&#34;</span>: <span style="color:#2aa198">&#34;1962-01-01&#34;</span>,
+              <span style="color:#268bd2">&#34;description&#34;</span>: <span style="color:#2aa198">&#34;A Wrinkle in Time is the story of Meg Murry, a high-school-aged girl who is transported on an adventure through time and space with her younger brother Charles Wallace and her friend Calvin O&#39;Keefe to rescue her father, a gifted scientist, from the evil forces that hold him prisoner on another planet.&#34;</span>
+          }
+      ]
+    }
+  ]
+}
+</code></pre></div></li>
+<li>
+<p>XML (eXtensible Markup Language)</p>
+<ul>
+<li>Uses tags, angle brackets, etc</li>
+<li>Not as common with modern APIs</li>
+<li>Extremely verbose. More difficult to read and write.</li>
+<li>XML Example:</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#719e07">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+  <span style="color:#268bd2">&lt;root</span><span style="color:#268bd2">&gt;</span>
+    <span style="color:#268bd2">&lt;authors</span><span style="color:#268bd2">&gt;</span>
+      <span style="color:#268bd2">&lt;first_name</span><span style="color:#268bd2">&gt;</span>Madeleine<span style="color:#268bd2">&lt;/first_name&gt;</span>
+      <span style="color:#268bd2">&lt;last_name</span><span style="color:#268bd2">&gt;</span>L<span style="color:#cb4b16">&amp;#x27;</span>Engle<span style="color:#268bd2">&lt;/last_name&gt;</span>
+      <span style="color:#268bd2">&lt;books</span><span style="color:#268bd2">&gt;</span>
+      <span style="color:#268bd2">&lt;title</span><span style="color:#268bd2">&gt;</span>A Wrinkle In Time<span style="color:#268bd2">&lt;/title&gt;</span>
+      <span style="color:#268bd2">&lt;publisher</span><span style="color:#268bd2">&gt;</span>Ariel Books<span style="color:#268bd2">&lt;/publisher&gt;</span>
+      <span style="color:#268bd2">&lt;genres</span><span style="color:#268bd2">&gt;</span>Young Adult<span style="color:#268bd2">&lt;/genres&gt;</span>
+      <span style="color:#268bd2">&lt;genres</span><span style="color:#268bd2">&gt;</span>Science Fantasy<span style="color:#268bd2">&lt;/genres&gt;</span>
+      <span style="color:#268bd2">&lt;pages</span><span style="color:#268bd2">&gt;</span>218<span style="color:#268bd2">&lt;/pages&gt;</span>
+      <span style="color:#268bd2">&lt;publish_date</span><span style="color:#268bd2">&gt;</span>1962-01-01T00:00:00.000Z<span style="color:#268bd2">&lt;/publish_date&gt;</span>
+      <span style="color:#268bd2">&lt;description</span><span style="color:#268bd2">&gt;</span>A Wrinkle in Time is the story of Meg Murry, a high-school-aged girl who is transported on an adventure through time and space with her younger brother Charles Wallace and her friend Calvin O<span style="color:#cb4b16">&amp;#x27;</span>Keefe to rescue her father, a gifted scientist, from the evil forces that hold him prisoner on another planet.<span style="color:#268bd2">&lt;/description&gt;</span>
+      <span style="color:#268bd2">&lt;/books&gt;</span>
+    <span style="color:#268bd2">&lt;/authors&gt;</span>
+  <span style="color:#268bd2">&lt;/root&gt;</span>
+</code></pre></div></li>
+</ul>
+<h3 id="12-describe-parsing-of-common-data-format-to-python-data-structures">1.2 Describe parsing of common data format to Python data structures</h3>
+<h4 id="parse-yaml-in-python">Parse YAML in Python</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#719e07">import</span> yaml <span style="color:#586e75"># Need to install pyyaml</span>
+
+<span style="color:#719e07">with</span> <span style="color:#b58900">open</span>(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">authors.json</span><span style="color:#2aa198">&#39;</span>) <span style="color:#719e07">as</span> authors_file:
+    data<span style="color:#719e07">=</span>authors_file<span style="color:#719e07">.</span>read()
+
+authors_json <span style="color:#719e07">=</span> yaml<span style="color:#719e07">.</span>safe_load(data)
+authors <span style="color:#719e07">=</span> authors_json[<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">authors</span><span style="color:#2aa198">&#39;</span>]
+
+<span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Number of Authors: {len(authors)}</span><span style="color:#2aa198">&#39;</span>)
+<span style="color:#719e07">for</span> author <span style="color:#719e07">in</span> authors:
+    <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Author Name: {author[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">first_name</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]} {author[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">last_name</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+    books <span style="color:#719e07">=</span> author[<span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">books</span><span style="color:#2aa198">&#34;</span>]
+    <span style="color:#719e07">for</span> book <span style="color:#719e07">in</span> books:
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Title: {book[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">title</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Pages: {book[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">pages</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Description: {book[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">description</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+
+</code></pre></div><h4 id="parse-json-in-python">Parse JSON in Python</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#719e07">import</span> json
+
+<span style="color:#719e07">with</span> <span style="color:#b58900">open</span>(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">authors.json</span><span style="color:#2aa198">&#39;</span>) <span style="color:#719e07">as</span> authors_file:
+    data<span style="color:#719e07">=</span>authors_file<span style="color:#719e07">.</span>read()
+
+authors_json <span style="color:#719e07">=</span> json<span style="color:#719e07">.</span>loads(data)
+authors <span style="color:#719e07">=</span> authors_json[<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">authors</span><span style="color:#2aa198">&#39;</span>]
+
+<span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Number of Authors: {len(authors)}</span><span style="color:#2aa198">&#39;</span>)
+<span style="color:#719e07">for</span> author <span style="color:#719e07">in</span> authors:
+    <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Author Name: {author[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">first_name</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]} {author[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">last_name</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+    books <span style="color:#719e07">=</span> author[<span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">books</span><span style="color:#2aa198">&#34;</span>]
+    <span style="color:#719e07">for</span> book <span style="color:#719e07">in</span> books:
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Title: {book[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">title</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Pages: {book[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">pages</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Description: {book[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">description</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+
+</code></pre></div><h4 id="parse-xml-in-python">Parse XML in Python</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#719e07">from</span> xml.dom.minidom <span style="color:#719e07">import</span> parse
+
+domTree <span style="color:#719e07">=</span> parse(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">authors.xml</span><span style="color:#2aa198">&#39;</span>)
+root <span style="color:#719e07">=</span> domTree<span style="color:#719e07">.</span>documentElement
+
+authors <span style="color:#719e07">=</span> root<span style="color:#719e07">.</span>getElementsByTagName(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">authors</span><span style="color:#2aa198">&#39;</span>)
+<span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Number of Authors: {len(authors)}</span><span style="color:#2aa198">&#39;</span>)
+<span style="color:#719e07">for</span> author <span style="color:#719e07">in</span> authors:
+    firstName <span style="color:#719e07">=</span> author<span style="color:#719e07">.</span>getElementsByTagName(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">first_name</span><span style="color:#2aa198">&#39;</span>)[<span style="color:#2aa198">0</span>]
+    lastName <span style="color:#719e07">=</span> author<span style="color:#719e07">.</span>getElementsByTagName(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">last_name</span><span style="color:#2aa198">&#39;</span>)[<span style="color:#2aa198">0</span>]
+    <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Author Name: {firstName.firstChild.data} {lastName.firstChild.data}</span><span style="color:#2aa198">&#39;</span>)
+    books <span style="color:#719e07">=</span> author<span style="color:#719e07">.</span>getElementsByTagName(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">books</span><span style="color:#2aa198">&#39;</span>)
+    <span style="color:#719e07">for</span> book <span style="color:#719e07">in</span> books:
+        title <span style="color:#719e07">=</span> book<span style="color:#719e07">.</span>getElementsByTagName(<span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">title</span><span style="color:#2aa198">&#34;</span>)[<span style="color:#2aa198">0</span>]
+        pages <span style="color:#719e07">=</span> book<span style="color:#719e07">.</span>getElementsByTagName(<span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">pages</span><span style="color:#2aa198">&#34;</span>)[<span style="color:#2aa198">0</span>]
+        descr <span style="color:#719e07">=</span> book<span style="color:#719e07">.</span>getElementsByTagName(<span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">description</span><span style="color:#2aa198">&#34;</span>)[<span style="color:#2aa198">0</span>]
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Title: {title.firstChild.data}</span><span style="color:#2aa198">&#39;</span>)
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Pages: {pages.firstChild.data}</span><span style="color:#2aa198">&#39;</span>)
+        <span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Description: {descr.firstChild.data}</span><span style="color:#2aa198">&#39;</span>)
+
+</code></pre></div><h3 id="13-describe-the-concepts-of-test-drive-development">1.3 Describe the concepts of test-drive development</h3>
+<blockquote>
+<p>Test-driven development (TDD) is a software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved so that the tests pass. This is opposed to software development that allows software to be added that is not proven to meet requirements. - <a href="https://en.wikipedia.org/wiki/Test-driven_development">Wikipedia Link</a></p>
+</blockquote>
+<p>The ideology of Test-driven development is that you write tests before you write code. The primary goal is to ensure that the vast majority of your code works the way that it should &ndash; and that any changes to one part of your code do not have consequences to other parts of your code you don&rsquo;t catch immediately. Inevitably something you didn&rsquo;t account for will end up failing. When it does, you write a test that covers that case so it doesn&rsquo;t happen again. And the cycle continues.</p>
+<p>For more information on TDD check out <a href="https://www.agilealliance.org/glossary/tdd/">Agile Alliance: TDD</a></p>
+<h3 id="14-compare-software-development-methods-agile-lean-waterfall">1.4 Compare software development methods (agile, lean, waterfall)</h3>
+<ul>
+<li>Agile:
+<ul>
+<li>Flexibility focused.</li>
+<li>Allows for evolution of the product as it is being worked on</li>
+<li>Work is performed in short planned phases (i.e. every 2-3 weeks)
+<ul>
+<li>The goal of each iteration to provide a working product.</li>
+<li>Tests must pass at the end of each cycle</li>
+<li>Stakeholders get updated at the end of each cycle and may provide feedback
+<ul>
+<li>Changes may be incorporated from feedback in the next phase</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Downside: The openness to change may result in fluxuating timelines</li>
+</ul>
+</li>
+<li>Waterfall:
+<ul>
+<li>Development doesn&rsquo;t start until all planning is done</li>
+<li>Sequential and Linear development cycle</li>
+<li>Longer development cycles between producing updates</li>
+<li>Inflexible &ndash; Very hard to make changes in the middle of a dev cycle</li>
+<li>Lacks visibility. I.e. fewer check-ins / updates</li>
+<li>Upside: Since scope is known ahead of time:
+<ul>
+<li>Timelines tend to be more stable</li>
+<li>Progress is more easily measured against an end goal</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Lean
+<ul>
+<li>Focused on producing an MVP as quickly as possible.</li>
+<li>Can &ldquo;fail fast&rdquo; from a business perspective.
+<ul>
+<li>i.e. Are you building the right product? Allows you to abandon early if you aren&rsquo;t.</li>
+</ul>
+</li>
+<li>Reduce project delivery time and cost while delivering to a specific set of minimum requirements</li>
+<li>Downside: Little effort and time is spent considering the future needs of the application.</li>
+</ul>
+</li>
+</ul>
+<h3 id="15-explain-the-benefits-of-organizing-code-into-methods-functions-classes-and-modules">1.5 Explain the benefits of organizing code into methods/ functions, classes, and modules</h3>
+<p>The primary purposes for organizing code are reusability, testability, and refactoring.</p>
+<p>Consider this piece of code:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">people <span style="color:#719e07">=</span> [
+    {
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">firstName</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">John</span><span style="color:#2aa198">&#34;</span>,
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">lastName</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Carpenter</span><span style="color:#2aa198">&#34;</span>,
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">occupation</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Director</span><span style="color:#2aa198">&#34;</span>
+    },
+    {
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">firstName</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Madeleine</span><span style="color:#2aa198">&#34;</span>,
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">lastName</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">L</span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Engle</span><span style="color:#2aa198">&#34;</span>,
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">occupation</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Author</span><span style="color:#2aa198">&#34;</span>
+    }
+]
+
+<span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">{people[0][</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">firstName</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]} {people[0][</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">lastName</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+<span style="color:#719e07">print</span>(f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">{people[1][</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">firstName</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]} {people[1][</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">lastName</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>)
+</code></pre></div><p>So we have an array of &ldquo;anonymous&rdquo; objects. i.e. the structure is unclear, you won&rsquo;t get intellisense when working on it.</p>
+<p>We&rsquo;ll improve this a little at a time, starting with methods/functions:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">def</span> <span style="color:#268bd2">getFullName</span>(person):
+    <span style="color:#719e07">return</span> f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">{person[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">firstName</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]} {person[</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">lastName</span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">]}</span><span style="color:#2aa198">&#39;</span>
+
+people <span style="color:#719e07">=</span> [
+    {
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">firstName</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">John</span><span style="color:#2aa198">&#34;</span>,
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">lastName</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Carpenter</span><span style="color:#2aa198">&#34;</span>,
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">occupation</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Director</span><span style="color:#2aa198">&#34;</span>
+    },
+    {
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">firstName</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Madeleine</span><span style="color:#2aa198">&#34;</span>,
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">lastName</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">L</span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Engle</span><span style="color:#2aa198">&#34;</span>,
+        <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">occupation</span><span style="color:#2aa198">&#34;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Author</span><span style="color:#2aa198">&#34;</span>
+    }
+]
+
+<span style="color:#719e07">print</span>(getFullName(people[<span style="color:#2aa198">0</span>]))
+<span style="color:#719e07">print</span>(getFullName(people[<span style="color:#2aa198">1</span>]))
+</code></pre></div><p>This time instead of repeating the same structure of code to produce a full name, we extracted it into a function. A piece of code that we can reuse over and over again to produce the same result. And if something needs to be changed we only need to change it in one place. Not 2 or more.</p>
+<p>But there is still some improvement to be had here. For instance, what happens if we sent in an object that didn&rsquo;t have a firstName and a lastName? It would break. That&rsquo;s an extremely fragile piece of code. Lets see what a class can do for us here:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#719e07">class</span> <span style="color:#268bd2">Person</span>:
+  <span style="color:#719e07">def</span> __init__(<span style="color:#268bd2">self</span>, firstName, lastName, occupation):
+    <span style="color:#268bd2">self</span><span style="color:#719e07">.</span>firstName <span style="color:#719e07">=</span> firstName
+    <span style="color:#268bd2">self</span><span style="color:#719e07">.</span>lastName <span style="color:#719e07">=</span> lastName
+    <span style="color:#268bd2">self</span><span style="color:#719e07">.</span>occupation <span style="color:#719e07">=</span> occupation
+
+  <span style="color:#719e07">def</span> <span style="color:#268bd2">getFullName</span>(<span style="color:#268bd2">self</span>):
+      <span style="color:#719e07">return</span> f<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">{self.firstName} {self.lastName}</span><span style="color:#2aa198">&#39;</span>
+
+people <span style="color:#719e07">=</span> []
+people<span style="color:#719e07">.</span>append(Person(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">John</span><span style="color:#2aa198">&#39;</span>, <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Carpenter</span><span style="color:#2aa198">&#39;</span>, <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Director</span><span style="color:#2aa198">&#39;</span>))
+people<span style="color:#719e07">.</span>append(Person(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Madeleine</span><span style="color:#2aa198">&#39;</span>, <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">L</span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Engle</span><span style="color:#2aa198">&#34;</span>, <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Author</span><span style="color:#2aa198">&#39;</span>))
+
+<span style="color:#719e07">print</span>(people[<span style="color:#2aa198">0</span>]<span style="color:#719e07">.</span>getFullName())
+<span style="color:#719e07">print</span>(people[<span style="color:#2aa198">1</span>]<span style="color:#719e07">.</span>getFullName())
+
+</code></pre></div><p>Ahhh&hellip; Now we&rsquo;re getting somewhere. We have a class named person with a constructor that takes a firstName, a lastName, and an occupation. So if we were to do people[0] and put a period, we would get intellisense showing us options available on this type of object.</p>
+<p>Then we moved our getFullName() function inside that class. So every person object now has a method to get the fullname of that person. MUCH cleaner! And reuseable! And testable! We only have to test whether the Person class and its methods work correctly. If they don&rsquo;t we can fix it all in one place.</p>
+<p>As far as modules go, they&rsquo;re more for separating classes, functions, and values into groups that make sense. i.e. you might make one module that handles logging, so you can import it into any other python file you&rsquo;re using. Or you might create a module that has all the methods for talking to an API. And then you could have a main python file that imports the API module and the logging module. And you&rsquo;d know exactly what each is for because the logic is separated based on responsibility.</p>
+<h3 id="16-identify-the-advantages-of-common-design-patterns-mvc-and-observer">1.6 Identify the advantages of common design patterns (MVC and Observer)</h3>
+<h4 id="mvc-or-model-view-controller">MVC or Model-View-Controller</h4>
+<p>This is a pattern used in many languages &ndash; it is for the use of applications with a GUI.</p>
+<ul>
+<li>Model: Your data structures and potentially business logic. Though it may just be used to get data from a database.</li>
+<li>View: What your user sees</li>
+<li>Controller: The glue between your model and your view. It gets data from the model to be shown to the user, and sends data from the view to the model layer to be saved to databases etc.</li>
+</ul>
+<p>One of the benefits of this pattern is the separation of responsibilities into logical layers. This makes it easier to organize, understand, and test your code.</p>
+<h4 id="observer-pattern">Observer Pattern</h4>
+<p>The simplest way I can think of to describe the observer pattern is: What if you had an editable table of data on a screen, and to the left of that data you had a chart based on that data. Every time you update the data in the table you&rsquo;d expect the graph to change right? That&rsquo;s exactly the kind of problem that the Observer pattern is a solution for.</p>
+<p>It quite literally &ldquo;observes&rdquo; an object that other objects rely on. And when that object&rsquo;s state changes, the observer says &ldquo;Hey, you over there, this object you rely on just changed.&rdquo; Then those other objects can be update based on the object&rsquo;s new state.</p>
+<h4 id="why-patterns">Why Patterns</h4>
+<p>People have been programming for a long time. And it&rsquo;s very common for programmers to run into the same problems that other people have run into. It&rsquo;s the reason things like StackOverflow exist. Patterns were created to help remedy the most common &ldquo;big&rdquo; problems. So it&rsquo;s beneficial to learn common design patterns so that you can use proven solutions instead of banging your head against the wall trying to solve design issues on your own.</p>
+<h3 id="18-utilize-common-version-control-operations-with-git">1.8 Utilize common version control operations with Git</h3>
+<h4 id="git-clone">Git Clone</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git clone [url]
+</code></pre></div><ul>
+<li><strong>Example:</strong> <code>git clone git@github.com:FooBartn/WxTeamsSharp.git</code></li>
+<li><strong>Purpose:</strong> retrieve an entire repository from a hosted location via URL</li>
+</ul>
+<h4 id="git-addremove">Git Add/Remove</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git add [file]
+</code></pre></div><ul>
+<li><strong>Example</strong>: <code>git add parsejson.py</code></li>
+<li><strong>Purpose</strong>: Add a file as it looks now to your next commit. Also known as Staging. Using <code>git add .</code> will add/stage all new and modified files. <code>git add -A</code> will stage all new, modified, and deleted files</li>
+</ul>
+<h4 id="git-commit">Git Commit</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git commit -m “[descriptive message]”
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: Commit your staged content as a new commit snapshot</li>
+</ul>
+<h4 id="git-push--pull">Git Push / Pull</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git push [alias] [branch]
+</code></pre></div><ul>
+<li><strong>Example</strong>: <code>git push origin master</code> &lt;&ndash; Push the local master branch to remote named origin</li>
+<li><strong>Purpose</strong>: Transmit local branch commits to the remote repository branch</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git pull
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: Fetch and merge any commits from the tracking remote branch</li>
+</ul>
+<h4 id="git-branch">Git Branch</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git branch
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: List your branches. a * will appear next to the currently active branch</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git branch [branch-name]
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: Create a new branch at the current commit</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git checkout [branch]
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: Switch to another branch and check it out into your working directory</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git checkout -b [branch]
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: Create another branch, switch to it, and check it out into your working directory</li>
+</ul>
+<h3 id="git-merge-and-handling-conflicts">Git Merge and handling conflicts</h3>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git merge [branch]
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: Merge the specified branch’s history into the current one</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git status
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: One of the primary purposes is to list out any any files affected by merge conflicts.</li>
+</ul>
+<blockquote>
+<p>For more detail on resolving merge conflicts see <a href="https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/merge-conflicts">Git-Tower: Merge Conflicts</a></p>
+</blockquote>
+<h4 id="git-diff">Git Diff</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git diff
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: Diff of what is changed but not staged</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git diff --staged
+</code></pre></div><ul>
+<li><strong>Purpose</strong>: Diff of what is staged but not yet commited</li>
+</ul>
+<blockquote>
+<p>Note: Check out the <a href="https://www.atlassian.com/git/tutorials/saving-changes/git-diff">Atlassian: Git-Diff Tutorial</a> to see how to read and understand the output from git diff!</p>
+</blockquote>
+<h2 id="20-software-development-and-design-20">2.0 Software Development and Design (20%)</h2>
+<h3 id="construct-a-rest-api-request-to-accomplish-a-task-given-api-documentation">Construct a REST API request to accomplish a task given API documentation</h3>
+<h4 id="http-verbs--actions">HTTP Verbs / Actions</h4>
+<ul>
+<li><strong>POST</strong>: Create</li>
+<li><strong>GET</strong>: Read</li>
+<li><strong>PUT</strong>: Update</li>
+<li><strong>PATCH</strong>: Update</li>
+<li><strong>DELETE</strong>: Delete</li>
+</ul>
+<h4 id="reading-api-documentation">Reading API Documentation</h4>
+<p>Let&rsquo;s take a look at one of my favorite little APIs: <a href="https://icanhazdadjoke.com/api">ICanHazDadJoke API</a></p>
+<p>The documentation states that I do not need Authentication, and that it will adjust its return output based on the Accept headers we send in. It will return text/html by default.</p>
+<p>The API states that the main endpoint is this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GET https://icanhazdadjoke.com/ fetch a random dad joke.
+</code></pre></div><p>Notice that the first part of this says GET. API documentation will let you know the correct verb to use to interact with that endpoint.</p>
+<p>So lets try to get a Dad joke using Python&rsquo;s requests library!</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">import</span> requests
+
+response <span style="color:#719e07">=</span> requests<span style="color:#719e07">.</span>get(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">https://icanhazdadjoke.com/</span><span style="color:#2aa198">&#39;</span>)
+joke <span style="color:#719e07">=</span> response<span style="color:#719e07">.</span>content
+<span style="color:#719e07">print</span>(joke)
+</code></pre></div><p>Oh&hellip; if we do that, we get back a whole HTML page! Remember, the default return is text/html. This is so you can browse to &lsquo;<a href="https://icanhazdadjoke.com">https://icanhazdadjoke.com</a>&rsquo; and you will see a nicely formatted joke in your browser.</p>
+<p>Alright, so what to do to get JSON? We need to change our Accept header to tell the API what kind of response we want back.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#719e07">import</span> requests
+
+url <span style="color:#719e07">=</span> <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">https://icanhazdadjoke.com/</span><span style="color:#2aa198">&#39;</span>
+headers <span style="color:#719e07">=</span> {
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Accept</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">application/json</span><span style="color:#2aa198">&#39;</span>
+}
+response <span style="color:#719e07">=</span> requests<span style="color:#719e07">.</span>get(url, headers<span style="color:#719e07">=</span>headers)
+joke <span style="color:#719e07">=</span> response<span style="color:#719e07">.</span>json()
+<span style="color:#719e07">print</span>(joke)
+
+</code></pre></div><p>Ah! Much better. Now we get json back that looks something like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#268bd2">&#34;id&#34;</span>: <span style="color:#2aa198">&#34;pzXvHl3EYg&#34;</span>,
+    <span style="color:#268bd2">&#34;joke&#34;</span>: <span style="color:#2aa198">&#34;Why don’t seagulls fly over the bay? Because then they’d be bay-gulls!&#34;</span>,
+    <span style="color:#268bd2">&#34;status&#34;</span>: <span style="color:#2aa198">200</span>
+}
+</code></pre></div><p>And if you run it again you&rsquo;ll get a different joke. But what if I wanted a specific joke?</p>
+<p>There is another endpoint that says:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GET https://icanhazdadjoke.com/j/&lt;joke_id&gt; fetch a specific dad joke.
+</code></pre></div><p>See in the json above, each joke also comes with an ID. You can use this to refer to a specific joke.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#719e07">import</span> requests
+
+url <span style="color:#719e07">=</span> <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">https://icanhazdadjoke.com/j/ukOCYoWDQuc</span><span style="color:#2aa198">&#39;</span>
+headers <span style="color:#719e07">=</span> {
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Accept</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">application/json</span><span style="color:#2aa198">&#39;</span>
+}
+response <span style="color:#719e07">=</span> requests<span style="color:#719e07">.</span>get(url, headers<span style="color:#719e07">=</span>headers)
+joke <span style="color:#719e07">=</span> response<span style="color:#719e07">.</span>json()
+<span style="color:#719e07">print</span>(joke)
+
+</code></pre></div><p>This particular ID should result in the joke: My sea sickness comes in waves. I love it.</p>
+<p>There&rsquo;s even a search endpoint. And this one is a good one to check out, because it uses query parameters. Query parameters are those things you see after the ? in a URL.</p>
+<p>The endpoint is this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GET https://icanhazdadjoke.com/search - search for dad jokes.
+</code></pre></div><p>And the API states that the endpoint accepts these query parameters:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">page - which page of results to fetch (default: 1)
+limit - number of results to return per page (default: 20) (max: 30)
+term - search term to use (default: list all jokes)
+</code></pre></div><p>Hmm.. Let&rsquo;s try searching for a joke about dogs. But we only want it to return 5 results per page.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">import</span> requests
+
+url <span style="color:#719e07">=</span> <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">https://icanhazdadjoke.com/search</span><span style="color:#2aa198">&#39;</span>
+headers <span style="color:#719e07">=</span> {
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Accept</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">application/json</span><span style="color:#2aa198">&#39;</span>
+}
+params <span style="color:#719e07">=</span> {
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">term</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">dog</span><span style="color:#2aa198">&#39;</span>,
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">limit</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">5</span><span style="color:#2aa198">&#39;</span>
+}
+response <span style="color:#719e07">=</span> requests<span style="color:#719e07">.</span>get(url, headers<span style="color:#719e07">=</span>headers, params<span style="color:#719e07">=</span>params)
+joke <span style="color:#719e07">=</span> response<span style="color:#719e07">.</span>json()
+<span style="color:#719e07">print</span>(joke)
+</code></pre></div><p>And that returned:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#268bd2">&#34;current_page&#34;</span>: <span style="color:#2aa198">1</span>,
+    <span style="color:#268bd2">&#34;limit&#34;</span>: <span style="color:#2aa198">5</span>,
+    <span style="color:#268bd2">&#34;next_page&#34;</span>: <span style="color:#2aa198">2</span>,
+    <span style="color:#268bd2">&#34;previous_page&#34;</span>: <span style="color:#2aa198">1</span>,
+    <span style="color:#268bd2">&#34;results&#34;</span>: [
+        {
+            <span style="color:#268bd2">&#34;id&#34;</span>: <span style="color:#2aa198">&#34;EBQfiyXD5ob&#34;</span>, 
+            <span style="color:#268bd2">&#34;joke&#34;</span>: <span style="color:#2aa198">&#34;what do you call a dog that can do magic tricks? a labracadabrador&#34;</span>
+        },
+        {
+            <span style="color:#268bd2">&#34;id&#34;</span>: <span style="color:#2aa198">&#34;DIeaUDlbUDd&#34;</span>,
+            <span style="color:#268bd2">&#34;joke&#34;</span>: <span style="color:#2aa198">&#34;“My Dog has no nose.” “How does he smell?” “Awful”&#34;</span>
+        }
+        // and more jokes..
+    ],
+    <span style="color:#268bd2">&#34;search_term&#34;</span>: <span style="color:#2aa198">&#34;dog&#34;</span>,
+    <span style="color:#268bd2">&#34;status&#34;</span>: <span style="color:#2aa198">200</span>,
+    <span style="color:#268bd2">&#34;total_jokes&#34;</span>: <span style="color:#2aa198">12</span>,
+    <span style="color:#268bd2">&#34;total_pages&#34;</span>: <span style="color:#2aa198">2</span>
+}
+</code></pre></div><p>Whoa. That&rsquo;s way more than just jokes. We&rsquo;ve got current_page, limit, next_page, previous_page, search_term, total_jokes, total_pages&hellip;</p>
+<p>Remember there was a 3rd query parameter available for the endpoint called page? If we called this same endpoint but used the query paramter <code>'page': 2</code> we&rsquo;d get the second page of results. Try it out on your own!</p>
+<blockquote>
+<p>Another common command for making HTTP requests is cURL. Its syntax looks like this: curl -X GET <a href="https://icanhazdadjoke.com/">https://icanhazdadjoke.com/</a>. For more information about cURL check out <a href="https://ec.haxx.se/">Everything cURL</a>. Or, if you just want a quick cheat sheet check out: <a href="https://devhints.io/curl">devhints: curl</a></p>
+</blockquote>
+<h3 id="describe-common-usage-patterns-related-to-webhooks">Describe common usage patterns related to webhooks</h3>
+<p>APIs are wonderful. You ask them for information, they give it to you. But what if that information changes all the time, and your application relies on up-to-date data?</p>
+<p>Well, you just query it more often right? Maybe. But most APIs have a rate-limit. After a certain number of requests per second or minute they tell you &ldquo;Whoa, slow down.&rdquo; They do this by denying your request and usually sending a header along to tell you how long your timeout is for.</p>
+<p>&ldquo;But I need the new data as soon as it changes!!&quot;, you say. In comes the webhook to save the day, IF the API you&rsquo;re working with has made them available.</p>
+<p>Instead of relying on you asking for more information, you register a link to an API of your own that is capable of receiving a POST request. This tells the API you need information from &ndash; &ldquo;Hey, everytime this data changes <strong>YOU</strong> send <strong>ME</strong> an update!&quot;. When the data changes, the API sees your registered webhook and sends a POST request to your API with the new data. Voila! No more sending GET requests every 5 seconds to the API!</p>
+<h3 id="identify-the-constraints-when-consuming-apis">Identify the constraints when consuming APIs</h3>
+<p>I&rsquo;m not entirely sure what they&rsquo;re looking for here, but my guess is things like:</p>
+<ul>
+<li>How often you can make a request of the API before it gives you back a 429 TooManyRequests response</li>
+<li>What type of authentication is required to use the API</li>
+<li>How many requests you can make in any given time period (day,week,month) before you hit your limit</li>
+</ul>
+<h3 id="explain-common-http-response-codes-associated-with-rest-apis">Explain common HTTP response codes associated with REST APIs</h3>
+<ul>
+<li><strong>200</strong> OK: All looks good</li>
+<li><strong>201</strong> Created: New resource created</li>
+<li><strong>400</strong> Bad Request: Request was invalid</li>
+<li><strong>401</strong> Unauthorized: Authentication missing or incorrect</li>
+<li><strong>403</strong> Forbidden Request: was understood but not allowed</li>
+<li><strong>404</strong> Not Found: Resource not found</li>
+<li><strong>500</strong> Internal Server Error: Something wrong with the server</li>
+<li><strong>503</strong> Service Unavailable: Server is unable to complete request</li>
+</ul>
+<h3 id="troubleshoot-a-problem-given-the-http-response-code-request-and-api-documentation">Troubleshoot a problem given the HTTP response code, request and API documentation</h3>
+<p>We&rsquo;ll take a look at a slightly more &ldquo;professional&rdquo; API than ICanHazDadJoke this time around. Let&rsquo;s check out the <a href="https://developer.webex.com/docs/api/basics">Webex Teams API: Basics</a></p>
+<p>Scroll down to the API Errors section. You should see a table like this:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Successful Request</td>
+</tr>
+<tr>
+<td>204</td>
+<td>No Content</td>
+<td>Successful request without body content</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>The request was invalid or cannot be otherwise served. An accompanying error message will explain further</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Authentication credentials were missing or incorrect</td>
+</tr>
+</tbody>
+</table>
+<p>Most APIs will have information like this to let you know what went wrong and how to handle it.</p>
+<blockquote>
+<p>Note: If you see an error message in the 50x range, you&rsquo;re all outta luck. Those are server issues and the only thing you can do is send a message to the owners of that API and hope they fix it.</p>
+</blockquote>
+<h3 id="identify-the-parts-of-an-http-response-response-code-headers-body">Identify the parts of an HTTP response (response code, headers, body)</h3>
+<p><img src="https://developer.cisco.com/learning/posts/files/what-are-rest-apis/assets/images/request-response.png" alt="Cisco REST Infographic"> - From <a href="https://developer.cisco.com/learning/lab/what-are-rest-apis/step/1">Cisco DevNet: What are REST APIs?</a></p>
+<h3 id="utilize-common-api-authentication-mechanisms-basic-custom-token-and-api-keys">Utilize common API authentication mechanisms: basic, custom token, and API keys</h3>
+<p><strong>Most</strong> APIs have some sort of authentication, even if it&rsquo;s just to keep track of who is doing what so abusers can be caught. Not many are as open as the ICanHazDadJoke API, where its only request is that if you&rsquo;re using it from an application of your own (as opposed to just playing around with it) you put the application name in the User-Agent header so they can tell where it&rsquo;s coming from.</p>
+<p>The most common form of this that I see is an API Key. You register for a service, agree to all the terms, and they give you an API key that is strictly for your account. You then put that in the header of every request you make. I.e. if ICanHazDadJoke did require an API key, the request might look like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">import</span> requests
+
+url <span style="color:#719e07">=</span> <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">https://icanhazdadjoke.com/search</span><span style="color:#2aa198">&#39;</span>
+headers <span style="color:#719e07">=</span> {
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Accept</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">application/json</span><span style="color:#2aa198">&#39;</span>,
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Authorization</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Bearer 235235235xyz</span><span style="color:#2aa198">&#39;</span>
+}
+params <span style="color:#719e07">=</span> {
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">term</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">dog</span><span style="color:#2aa198">&#39;</span>,
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">limit</span><span style="color:#2aa198">&#39;</span>: <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">5</span><span style="color:#2aa198">&#39;</span>
+}
+response <span style="color:#719e07">=</span> requests<span style="color:#719e07">.</span>get(url, headers<span style="color:#719e07">=</span>headers, params<span style="color:#719e07">=</span>params)
+joke <span style="color:#719e07">=</span> response<span style="color:#719e07">.</span>json()
+<span style="color:#719e07">print</span>(joke)
+</code></pre></div><p>You also have Basic Authentication, Digest Authentication, and OAuth (1 and 2) Authentication.</p>
+<p>Basic authentication is the simplest. And the least secure. You send the username and password over plain text. So if it&rsquo;s done, it really should be done using Transport Layer Security (TLS) &ndash; i.e. it should use https, not http. In Python it looks like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">requests<span style="color:#719e07">.</span>get(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">https://api.github.com/user</span><span style="color:#2aa198">&#39;</span>, auth<span style="color:#719e07">=</span>HTTPBasicAuth(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">user</span><span style="color:#2aa198">&#39;</span>, <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">pass</span><span style="color:#2aa198">&#39;</span>))
+</code></pre></div><p>Digest Authentication is very similar to Basic, except that it encrypts the data with a hash instead of sending it in plain text. So even though TLS is always preferred, in this case it&rsquo;s not as risky.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">requests<span style="color:#719e07">.</span>get(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">https://api.github.com/user</span><span style="color:#2aa198">&#39;</span>, auth<span style="color:#719e07">=</span>HTTPDigestAuth(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">user</span><span style="color:#2aa198">&#39;</span>, <span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">pass</span><span style="color:#2aa198">&#39;</span>))
+</code></pre></div><p>OAuth is the most common form of authentication if you&rsquo;re authenticating on behalf of other users. Think of an app that you&rsquo;ve signed up for that was 3rd party for a large service. Or when you use a Facebook account to authenticate with a non-Facebook service. When you sign up, you&rsquo;ve probably seen a page that says &ldquo;This application would like to access your account with these privileges: Read your username, Read your email, etc&rdquo;. That&rsquo;s the Oauth workflow at work!</p>
+<p>It basically goes like this:
+Your app has a Client Id and probably a Client Secret, along with a redirect URI (where to go back to once a user has authenticated). You also specify a scope of rights your app should have.</p>
+<p>Whenever a user wants to authenticate, you send them to the API services Oauth url with the parameters we talked about in the paragraph above. They will get a message like &ldquo;FooBarton&rsquo;s app would like to access your profile&rdquo;. If they click accept, their service uses the redirect URI to send them back to your page along with a special code. Your app then uses that code to make a <strong>second</strong> request to a different endpoint to get a token with that code. That token is then good for a set amount of time before it must be renewed or the user must re-authenticate.</p>
+<p>To see more about how to use Oauth with Python, check out <a href="https://requests-oauthlib.readthedocs.io/en/latest/oauth2_workflow.html">requests-oauthlib</a></p>
+<h3 id="compare-common-api-styles-rest-rpc-synchronous-and-asynchronous">Compare common API styles (REST, RPC, synchronous, and asynchronous)</h3>
+<h4 id="rest-and-rpc">REST and RPC</h4>
+<p>REST, which has become the most popular form of communication with APIs has rules and standards that help making talking to any API a near-ubiquitous experience. If you&rsquo;ve done a GET with one REST API that returns JSON, you&rsquo;ve done them all. This allows an API to last for a very long time without needing to be changed.</p>
+<p>Some of the restrictions REST API developers are supposed to follow:</p>
+<ul>
+<li>REST must be stateless: not persisting sessions between requests.</li>
+<li>Responses should declare cacheablility: helps your API scale if clients respect the rules.</li>
+<li>REST focuses on uniformity: if you’re using HTTP you should utilize HTTP features whenever possible, instead of inventing conventions.</li>
+</ul>
+<blockquote>
+<p>See all 6 architectural constraints described <a href="https://restfulapi.net/rest-architectural-constraints/">here</a></p>
+</blockquote>
+<p>REST APIs will commonly use all of the available HTTP verbs for a given endpoint to allow you to do CRUD-based (Create, Read, Update, Delete) operations. GET, POST, PUT, DELETE, PATCH</p>
+<p>And these can take data payloads in the form of JSON, or query parameters like we used previously to modify the request</p>
+<p>RPC stands for &ldquo;Remote Procedure Call&rdquo;. Think of it like calling a python function. An RPC API is a list of functions available to call where you give it the name of the function and the argument/parameter for it. And these APIs typically only serve GET or POST requests.</p>
+<p>One of the big differences is that, with RPC, <em>everything</em> is a separate function.</p>
+<p>Say you have a person directory. If you want to get people by first name you might do:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">POST /getPersonByFirstName
+Content-Type: application/json
+
+{&#34;firstName&#34;: &#34;Elliot&#34;}
+</code></pre></div><p>But if you wanted to get people by last name:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">POST /getPersonByLastName
+Content-Type: application/json
+
+{&#34;lastName&#34;: &#34;Baker&#34;}
+</code></pre></div><p>Two different endpoints to get the same type of object, just by a different value. In comparison, you&rsquo;d probably see this for a REST API</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GET /getPerson?lastName=Baker
+GET /getPerson?firstName=Elliot
+</code></pre></div><p>Same API endpoint, just with a different query parameter.</p>
+<p>In this regard, REST is usually seen as the best way to deal with CRUD, while RPC is more action based.</p>
+<p>Slack uses an RPC api because things like kick, ban, etc don&rsquo;t really fit well in the GET, POST, PUT, DELETE, PATCH semantics. In REST you expect that GET is for reading, POST is for adding new things, etc. Where do kick and ban fit in? You could make them, for sure. But when you start shoehorning REST with RPC-style actions, it gets a little confusing. Not just for developers, but for users who expect your REST API to act just like a REST API.</p>
+<h4 id="synchronous-and-asynchronous">Synchronous and Asynchronous</h4>
+<p>The easiest way to think of synchronous and asynchronous is that synchronous is synonomous with the wait symbol (hourlgass, spinner, etc). You know when you go to a website and it sits there with a spinner in the browser tab? That&rsquo;s a synchronous operation. You have to wait for it, and while you&rsquo;re waiting the app (or webpage) is stalled.</p>
+<p>An asynchronous operation is one that you do not have to wait for directly. Let&rsquo;s say, for instance, that you make an RPC call to configure and deploy a new server. And that operation will take 10 minutes. Do you want your app to make that call and then sit there locked up for 10 minutes waiting for it to finish? (synch)</p>
+<p>Or do you want to make that call and let a webhook notify you whenever it&rsquo;s done. And in the meantime your user is still able to use the app to look at other things. (async)</p>
+<p>Or maybe you want to GET a list of all your transactions for the last 20 years. And this will take 30 minutes to complete. You could send a request to the API with your email address and it could send you an email with a link to your download when it&rsquo;s ready. But you didn&rsquo;t have to sit there waiting 30 minutes. You can go do other things. (async)</p>
+<p>As with REST and RPC, Synchronous and Asynchronous APIs have their uses!</p>
+<h3 id="construct-a-python-script-that-calls-a-rest-api-using-the-requests-library">Construct a Python script that calls a REST API using the requests library</h3>
+<p>We&rsquo;ve done a few of these ^___^</p>
+<h2 id="30-cisco-platforms-and-development-15">3.0 Cisco Platforms and Development (15%)</h2>
+<h3 id="31-construct-a-python-script-that-uses-a-cisco-sdk-given-sdk-documentation">3.1 Construct a Python script that uses a Cisco SDK given SDK documentation</h3>
+<p>A quick python script for getting a list of devices from the Cisco Sandbox DNAC</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">from</span> dnacentersdk <span style="color:#719e07">import</span> api <span style="color:#586e75"># pip install dnacentersdk first!</span>
+
+dnac <span style="color:#719e07">=</span> api<span style="color:#719e07">.</span>DNACenterAPI(username<span style="color:#719e07">=</span><span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">devnetuser</span><span style="color:#2aa198">&#34;</span>,
+                        password<span style="color:#719e07">=</span><span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Cisco123!</span><span style="color:#2aa198">&#34;</span>,
+                        base_url<span style="color:#719e07">=</span><span style="color:#2aa198"></span><span style="color:#2aa198">&#34;</span><span style="color:#2aa198">https://sandboxdnac2.cisco.com:443</span><span style="color:#2aa198">&#34;</span>,
+                        version<span style="color:#719e07">=</span><span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">1.3.0</span><span style="color:#2aa198">&#39;</span>,
+                        verify<span style="color:#719e07">=</span><span style="color:#268bd2">True</span>)
+
+devices <span style="color:#719e07">=</span> dnac<span style="color:#719e07">.</span>devices<span style="color:#719e07">.</span>get_device_list()
+
+<span style="color:#719e07">for</span> device <span style="color:#719e07">in</span> devices<span style="color:#719e07">.</span>response:
+    <span style="color:#719e07">print</span>(device<span style="color:#719e07">.</span>managementIpAddress)
+
+</code></pre></div><p>There&rsquo;s a bit of a hidden doc that shows all the commands available with this SDK. <a href="https://dnacentersdk.readthedocs.io/en/latest/api/api_structure_table_v1_3_0.html">Check it out</a></p>
+<h3 id="32-describe-the-capabilities-of-cisco-network-management-platforms-and-apis-meraki-cisco-dna-center-aci-cisco-sd-wan-and-nso">3.2 Describe the capabilities of Cisco network management platforms and APIs (Meraki, Cisco DNA Center, ACI, Cisco SD-WAN, and NSO)</h3>
+<p>List of general dev documents available <a href="https://developer.cisco.com/docs/">here</a></p>
+<h4 id="meraki">Meraki</h4>
+<p>The Meraki Dashboard API is an interface for software to interact directly with the Meraki cloud platform and Meraki managed devices. The API contains a set of tools known as endpoints for building software and applications that communicate with the Meraki Dashboard for use cases such as provisioning, bulk configuration changes, monitoring, and role-based access controls. The Dashboard API is a modern, RESTful API using HTTPS requests to a URL and JSON as a human-readable format. The Dashboard API is an open-ended tool can be used for many purposes, and here are some examples of how it is used today by Meraki customers:</p>
+<ul>
+<li>Add new organizations, admins, networks, devices, VLANs, SSIDs</li>
+<li>Provision thousands of new sites in minutes with an automation script</li>
+<li>Automatically onboard and off-board new employees&rsquo; teleworker device</li>
+<li>Build your own dashboard for store managers, field techs, or unique use cases</li>
+</ul>
+<p>Also leverage the Location Service APIs to discover real-time location statistics to improve customer engagement and loyalty across sites.</p>
+<p>- Read more @ <a href="https://documentation.meraki.com/zGeneral_Administration/Other_Topics/The_Cisco_Meraki_Dashboard_API">Meraki Dashboard API Documentation</a></p>
+<h4 id="cisco-dna-center">Cisco DNA Center</h4>
+<p>Intent API (Northbound)
+The Intent API is a Northbound REST API that exposes specific capabilities of the Cisco DNA Center platform. The Intent API provides policy-based abstraction of business intent, allowing focus on an outcome rather than struggling with individual mechanisms steps. The RESTful Cisco DNA Center Intent API uses HTTPS verbs (GET, POST, PUT, and DELETE) with JSON structures to discover and control the network. For more information, see Intent API. The Intent API is grouped, hierarchically into functional &lsquo;domains&rsquo; and &lsquo;subdomains&rsquo; of service.</p>
+<p>- Read more @ <a href="https://developer.cisco.com/docs/dna-center/#!cisco-dna-center-platform-overview/intent-api-northbound">Cisco DNA Center Platform</a></p>
+<h4 id="aci">ACI</h4>
+<p>Cisco ACI Programmability with Object-Oriented Data Model and REST APIs
+Cisco has taken a foundational approach to building a programmable network infrastructure with Cisco ACI. The ACI infrastructure operates as a single system at the fabric level, controlled by the centralized Cisco Application Policy Infrastructure Controller (APIC). With this approach, the data center network as a whole is tied together cohesively and treated as an intelligent transport system for the applications that support business. On network devices that are part of this fabric, the operating systems have been written to support this system view and provide an architecture for programmability at the foundation.</p>
+<p>Instead of opening up a subset of the network functionality through programmatic interfaces, like previous Software Defined Networking (SDN) solutions, the entire ACI infrastructure is opened up for programmatic access. This is achieved by providing access to Cisco ACI object model. The ACI object model represents the complete configuration and runtime state of every single software and hardware component in the entire infrastructure. The object model is made available through standard REST API interfaces, making it easy to access and manipulate the configuration and runtime state of the system.</p>
+<p>- Read more @ <a href="https://developer.cisco.com/docs/aci/#!introduction/aci-programmability">ACI Programmability</a></p>
+<h4 id="cisco-sd-wan">Cisco SD-WAN</h4>
+<p>Legacy networking technology has become increasingly expensive and complex, and it cannot scale to meet the needs of today&rsquo;s multisite enterprises. The Cisco SD-WAN Secure Extensible Network (SEN), which is based on time-tested and proven elements of networking, offers an elegant, software-based solution that reduces the costs of running enterprise networks and provides straightforward tools to simplify the provisioning and management of large and complex networks that are distributed across multiple locations and geographies. Built in to the Cisco SD-WAN SEN are inherent authentication and security processes that ensure the safety and privacy of the network and its data traffic.</p>
+<p>The Cisco SD-WAN SEN represents an evolution of networking from an older, hardware-based model to a secure, software-based, virtual IP fabric. The Cisco SD-WAN fabric, also called an overlay network, forms a software overlay that runs over standard network transport services, including the public Internet, MPLS, and broadband. The overlay network also supports next-generation software services, thereby accelerating your shift to cloud networking.</p>
+<p>- Read more @ <a href="https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/sdwan-xe-gs-book/system-overview.html">Cisco SD-WAN Guide</a></p>
+<h4 id="nso">NSO</h4>
+<p>Cisco® Network Services Orchestrator (NSO) enabled by Tail-f® is an industry-leading orchestration platform for hybrid networks. It provides comprehensive lifecycle service automation to enable you to design and deliver high-quality services faster and more easily.</p>
+<p>The network is a foundation for revenue generation. Therefore, service providers must implement network orchestration to simplify the entire lifecycle management for services. For today’s virtualized networks, this means transparent orchestration that spans multiple domains in your network and includes network functions virtualization (NFV) and software-defined networking (SDN) as well as your traditional physical network and all its components</p>
+<p>NSO is a model driven (YANG) platform for automating your network orchestration. It supports multi-vendor networks through a rich variety of Network Element Drivers (NEDs).</p>
+<p>Read more @ <a href="https://developer.cisco.com/docs/nso/">NSO Fundamentals</a></p>
+<h3 id="33-describe-the-capabilities-of-cisco-compute-management-platforms-and-apis-ucs-manager-ucs-director-and-intersight">3.3 Describe the capabilities of Cisco compute management platforms and APIs (UCS Manager, UCS Director, and Intersight)</h3>
+<h4 id="ucs-manager">UCS Manager</h4>
+<p>The Cisco Unified Compute System is the realization of Programmable Infrastructure. By providing an open full-coverage API, UCS enables infrastructure developers to manage compute, network, and storage resources with simplicity. The UCS Unified APIs are available in UCS Manager, UCS Central, and UCS IMC. Because the Unified APIs are, well &hellip; unified, learning one API means you&rsquo;ve learned the others. The systems or endpoints you develop for are represented as hierarchical Object Models referred to as the Management Information Tree.</p>
+<p>Read more @ <a href="https://developer.cisco.com/docs/ucs-dev-center/#!cicso-ucs-programmabilty/cisco-ucs-programmability">Cisco UCS Programmability</a></p>
+<h4 id="ucs-director">UCS Director</h4>
+<p>Cisco UCS Director automates, orchestrates, and manages Cisco and third-party hardware. You can manage network components and services. And allow data center staff to focus on services that set you apart from the competition.</p>
+<p>Cisco UCS Director can:</p>
+<ul>
+<li>Increase efficiency by automating multiple automated tasks</li>
+<li>Deliver error-free resources within minutes</li>
+<li>Simplify data center operations with centralized management</li>
+<li>Increase productivity with on-demand ordering of IT resources and services</li>
+</ul>
+<p>Read more @ <a href="https://developer.cisco.com/docs/ucs-dev-center-ucs-director/#!choosing-an-api">Cisco UCS Director</a></p>
+<h4 id="intersight">Intersight</h4>
+<p>Cisco Intersight™ provides intelligent cloud-based infrastructure management for the Cisco Unified Computing System™ (Cisco UCS®) and Cisco HyperFlex® platforms. Intersight offers an intelligent level of management that enables IT organizations to analyze, simplify, and automate their environments.</p>
+<p>Read more @ <a href="https://developer.cisco.com/site/intersight/">Cisco Intersight</a> and <a href="https://intersight.com/apidocs/introduction/overview/">Cisco Intersight API</a></p>
+<h3 id="34-describe-the-capabilities-of-cisco-collaboration-platforms-and-apis-webex-teams-webex-devices-cisco-unified-communication-manager-including-axl-and-uds-interfaces-and-finesse">3.4 Describe the capabilities of Cisco collaboration platforms and APIs (Webex Teams, Webex devices, Cisco Unified Communication Manager including AXL and UDS interfaces, and Finesse)</h3>
+<h4 id="webex">Webex</h4>
+<ul>
+<li>
+<p>Webex Meetings is a powerful conferencing solution that lets you connect with anyone, anywhere, in real time. By combining video, audio and content sharing, Webex Meetings creates an effective conferencing environment, leading to more satisfying meetings and increased productivity.</p>
+</li>
+<li>
+<p>Webex Teams makes staying in sync with your teammates and customers easy. Conversations in Webex Teams take place in virtual meeting rooms called spaces. Some spaces live for a few hours while others become permanent fixtures of your team&rsquo;s workflow with titles like Daily Standup or Build Status. Webex Teams allows conversations to flow seamlessly between messages, video calls, and real-time whiteboarding sessions. No other solution brings together so many facets of collaboration into a single, unified platform.</p>
+</li>
+<li>
+<p>Webex Devices help you build the best workplace for your team. Connect your work to the meeting room and beyond. With Webex Devices you can join Webex Meetings or participate in interactive whiteboarding sessions with Webex Teams users. The possibilities are endless.</p>
+</li>
+</ul>
+<p>Read more @ <a href="https://developer.webex.com/docs/platform-introduction">Cisco Webex for Developers</a></p>
+<h4 id="cisco-unified-communication-manager">Cisco Unified Communication Manager</h4>
+<p>Cisco® Unified Communications Manager is the heart of Cisco collaboration services, enabling session and call control for video, voice, messaging, mobility, instant messaging, and presence. Read more @ <a href="https://www.cisco.com/c/en/us/products/collateral/unified-communications/unified-communications-manager-callmanager/datasheet-c78-741428.html">Cisco UCM Data Sheet</a></p>
+<ul>
+<li>
+<p>AXL: The Administrative XML Web Service (AXL) is a XML/SOAP based interface that provides a mechanism for inserting, retrieving, updating and removing data from the Unified Communication configuration database. Developers can use AXL and the provided WSDL to Create, Read, Update, and Delete objects such as gateways, users, devices, route-patterns and much more. Read more @ <a href="https://developer.cisco.com/docs/axl/">Administrative AXL</a></p>
+</li>
+<li>
+<p>UDS: The User Data Services API is a REST-based set of operations that provide authenticated access to user resources and entities, such as user&rsquo;s devices, subscribed services, and speed dials, from the Unified Communications configuration database. Read more @ <a href="https://developer.cisco.com/docs/user-data-services-api-reference/#!user-data-services-uds-developer-guide">User Data Services API</a></p>
+</li>
+</ul>
+<h4 id="finesse">Finesse</h4>
+<p>Cisco Finesse is a next-generation agent and supervisor desktop designed to provide a collaborative experience for the various communities that interact with your customer service organization. It also helps improve the customer experience while offering a user-centric design to enhance customer care representative satisfaction.</p>
+<p>For IT professionals, Cisco Finesse offers transparent integration with the Cisco Collaboration portfolio. It is standards compliant and offers low cost customization of the agent and supervisor desktops.</p>
+<p>Cisco Finesse provides REST APIs for performing agent and supervisor actions programmatically. These REST APIs are easy to use, modeled after HTTP, and works in thick and thin client integrations. The Finesse Developer Guide explains the details for each of the API&rsquo;s, but here is a high-level description of the API functionality:</p>
+<p>Read more @ <a href="https://developer.cisco.com/docs/finesse/">Finesse</a></p>
+<h3 id="35-describe-the-capabilities-of-cisco-security-platforms-and-apis-firepower-umbrella-amp-ise-and-threatgrid">3.5 Describe the capabilities of Cisco security platforms and APIs (Firepower, Umbrella, AMP, ISE, and ThreatGrid)</h3>
+<h4 id="firepower">Firepower</h4>
+<p>Firepower offers powerful, documented integration points in context-rich APIs which allow the exchange of network and endpoint security events, data and host information.</p>
+<ul>
+<li>
+<p>Firepower Management Center (FMC): Context-rich APIs for exchange of network and endpoint security event data and host information.</p>
+</li>
+<li>
+<p>Firepower Threat Defense (FTD): A Rest API that automates configuration management and execution of operational tasks on Cisco Firepower Threat Defense (FTD) devices.</p>
+</li>
+</ul>
+<p>Read more @ <a href="https://developer.cisco.com/firepower/">Cisco Firepower</a></p>
+<h4 id="umbrella">Umbrella</h4>
+<p>Cisco Umbrella offers flexible cloud-delivered security when and how you need it. It combines multiple security functions into one solution, so you can enrich your incident response data and easily extend protection to devices and locations anywhere. Because Umbrella is delivered from the cloud, it is the easiest way to protect your users everywhere in minutes.</p>
+<p>Blocks access to malicious domains, URLs, IPs, and files using the Enforcement API or pull threat intelligence programmatically with the Investigate API.</p>
+<p>The Cisco Umbrella Enforcement API is designed to give technology partners the ability to send security events from their platform/service/appliance within a mutual customer’s environment to the Umbrella cloud for enforcement. You may also list the domains and delete individual domains from the list. All received events will be segmented by the mutual customer and used for future enforcement.</p>
+<p>Read more @ <a href="https://docs.umbrella.com/enforcement-api/reference/">Umbrella Enforcement API</a>, <a href="https://docs.umbrella.com/investigate-api/docs">Umbrella Investigate API</a>, and <a href="https://docs.umbrella.com/umbrella-api/docs">Umbrella API</a></p>
+<h4 id="amp">AMP</h4>
+<p>Cisco Advanced Malware Protection (AMP) for Endpoints offers cloud-delivered next-generation antivirus, endpoint protection platform (EPP), and advanced endpoint detection and response (EDR). Protect your Windows, Mac, Linux, Android, and iOS devices through a public or private cloud deployment with API access.</p>
+<p>Read more @ <a href="https://api-docs.amp.cisco.com/">Cisco AMP for Endpoints API</a></p>
+<h4 id="ise">ISE</h4>
+<p>Cisco Identity Services Engine (ISE) allows you to provide highly secure network access to users and devices. It helps you gain visibility into what is happening in your network, such as who is connected, which applications are installed and running, and much more. It also shares vital contextual data, such as user and device identities, threats, and vulnerabilities with integrated solutions from Cisco technology partners, so you can identify, contain, and remediate threats faster.</p>
+<p>Enforce compliance, heighten infrastructure security, and streamline user network access operations.</p>
+<p>Read more @ <a href="https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html">Cisco ISE</a> and <a href="https://developer.cisco.com/docs/identity-services-engine/">Cisco ISE API</a></p>
+<h4 id="threatgrid">ThreatGrid</h4>
+<p>Threat Grid combines advanced sandboxing with threat intelligence into one unified solution to protect organizations from malware. With a robust, context-rich malware knowledge base, you will understand what malware is doing, or attempting to do, how large a threat it poses, and how to defend against it.</p>
+<p>Review and analyze potential threats or behavior indicators of malware activity.</p>
+<p>Threat Grid’s REST APIs allow users to submit samples for analysis as part of an investigation or research. The indicators and data from the analysis are indexed and searchable making it easy to use for triage, hunting, or threat intelligence. This allows analysts to query the data and find, for example, additional pieces of infrastructure that an attacker is using in a campaign, methods of persistence a family of malware uses, host or network indicators that follow similar naming conventions, host indicators that families of malware leave behind, etc.</p>
+<p>Read more @ <a href="https://www.cisco.com/c/en/us/products/security/threat-grid/index.html">Threat Grid</a> and <a href="https://developer.cisco.com/threat-grid/">Threat Grid API</a></p>
+<h3 id="36-describe-the-device-level-apis-and-dynamic-interfaces-for-ios-xe-and-nx-os">3.6 Describe the device level APIs and dynamic interfaces for IOS XE and NX-OS</h3>
+<h4 id="ios-xe">IOS XE</h4>
+<p><strong>NETCONF</strong> provides a means to programmatically interact with a device – in a model-based, machine-consumable, easy to understand and standards-based way. NETCONF is defined by &gt;RFC-6241 and is based on the YANG modeling language.</p>
+<ul>
+<li>NETCONF listens on any IP address assigned to the system. When enabled, NETCONF runs on port 830 and uses SSH for transport. SSH is enabled automatically when the NETCONF feature is enabled.</li>
+<li>NETCONF connections should be authenticated using AAA credentials. RADIUS, TACACS+ or local users defined with privilege level 15 access are allowed.</li>
+</ul>
+<p><strong>RESTCONF</strong> is a YANG-based, REST-like interface for configuring and operating network devices. RESTCONF is defined by an RFC 8040. The structure of data exchanged using the RESTCONF interface is defined (in advance) using YANG models. Management systems using YANG can directly access managed resources in a single operation. Familiar REST operations are included with RESTCONF, like GET, POST, PUT, PATCH, etc.</p>
+<ul>
+<li>RESTCONF listens on any IP address assigned to the system. RESTCONF operates on port 443 when enabled, and uses HTTPS for transport.</li>
+<li>RESTCONF connections should be authenticated using AAA credentials. RADIUS, TACACS+ or local users defined with privilege level 15 access are allowed.</li>
+</ul>
+<h4 id="nx-os">NX-OS</h4>
+<p>NETCONF and RESTCONF can both be used with NX-OS, but it brings an even better option to the table: NX-API</p>
+<p><strong>NX-API REST</strong> brings Model Driven Programmability (MDP) to standalone (non-APIC-based fabric) Nexus family switches. In model-driven architectures, software maintains a complete, explicit representation of the administrative and operational state of the system (the model) and performs actions only as side-effects of mutations of model entities.</p>
+<p>This model is a formal specification understood by network planners and developers that is rendered into a running system. Furthermore, this object model is made available through standard Representational State Transfer (REST) interfaces, making it easier to access and manipulate the object model, and hence, the configuration and runtime state of the system.</p>
+<p>For 9000 Series network devices, there is also a Python SDK available.</p>
+<p>Read more @ <a href="https://developer.cisco.com/docs/ios-xe/#!enabling-netconf-on-ios-xe">NETCONF for IOS XE</a>, <a href="https://developer.cisco.com/docs/ios-xe/#!enabling-restconf-on-ios-xe/http-https">RESTCONF for IOS XE</a>, <a href="https://developer.cisco.com/site/cisco-nexus-nx-api-references/">NX-API REST</a>, and <a href="https://developer.cisco.com/docs/nx-os/#!cisco-nexus-9000-series-python-sdk-user-guide-and-api-reference">Python SDK for 9000 Series</a></p>
+<h3 id="37-identify-the-appropriate-devnet-resource-for-a-given-scenario-sandbox-code-exchange-support-forums-learning-labs-and-api-documentation">3.7 Identify the appropriate DevNet resource for a given scenario (Sandbox, Code Exchange, support, forums, Learning Labs, and API documentation)</h3>
+<p><a href="https://developer.cisco.com/site/sandbox/">Sandbox</a>: Engineers, developers, network admins, architects, or anyone else who desires to develop/test against Cisco’s APIs, controllers, network gear, collaboration suite and more for free!</p>
+<ul>
+<li>Run your code against live infrastructure 24x7</li>
+<li>Free access to a variety of labs; choose from virtualized environments, simulators, and real hardware</li>
+<li>Select always on labs or reservation-based labs based on your need</li>
+</ul>
+<p><a href="https://developer.cisco.com/exchange/">Code Exchange</a>: A single, curated, online catalog for Cisco customers to find code, products, and services offered from across the Cisco ecosystem.</p>
+<ul>
+<li>Online, curated set of source code repositories related to all Cisco technology areas on public GitHub.</li>
+<li>Hundreds of code repositories, created and maintained by Cisco engineering teams, community contributors, ecosystem partners, technology and open source communities, and individual developers.</li>
+</ul>
+<p><a href="https://developer.cisco.com/site/support/">Support</a>: Need help on DevNet? Have a technology-specific question? We provide different ways of support to get your questions answered!</p>
+<ul>
+<li>Knowledge Base</li>
+<li>Community Forum</li>
+<li>Chat with DevNet</li>
+<li>Case-Based Ticket</li>
+</ul>
+<p><a href="https://community.cisco.com/t5/for-developers/ct-p/4409j-developer-home">Forums</a>: Get connected with other Cisco technology experts in DevNet.</p>
+<p><a href="https://developer.cisco.com/learning/">Learning Labs</a>: Dive deeper into Cisco and Cisco Partner technologies with DevNet Learning Labs, including Enterprise Networks, Data Center, Collaboration, Cloud, SDN, and IoT. Whether you&rsquo;re getting started or need a programming refresher, the Learning Labs get you started with tutorials covering REST APIs, Python, JavaScript, and other engineering technologies and concepts.</p>
+<h3 id="38-apply-concepts-of-model-driven-programmability-yang-restconf-and-netconf-in-a-cisco-environment">3.8 Apply concepts of model driven programmability (YANG, RESTCONF, and NETCONF) in a Cisco environment</h3>
+<p>Check out these learning labs:</p>
+<ul>
+<li><a href="https://developer.cisco.com/learning/lab/intro-netconf/step/1">Intro NETCONF</a></li>
+<li><a href="https://developer.cisco.com/learning/labs/intro-restconf/step/1">Intro RESTCONF</a></li>
+</ul>
+<h3 id="39-construct-code-to-perform-a-specific-operation-based-on-a-set-of-requirements-and-given-api-reference-documentation-such-as-these">3.9 Construct code to perform a specific operation based on a set of requirements and given API reference documentation such as these:</h3>
+<p>I&rsquo;m going to leave these for you to try out on your own!</p>
+<h4 id="39a-obtain-a-list-of-network-devices-by-using-meraki-cisco-dna-center-aci-cisco-sd-wan-or-nso">3.9.a Obtain a list of network devices by using Meraki, Cisco DNA Center, ACI, Cisco SD-WAN, or NSO</h4>
+<h4 id="39b-manage-spaces-participants-and-messages-in-webex-teams">3.9.b Manage spaces, participants, and messages in Webex Teams</h4>
+<h4 id="39c-obtain-a-list-of-clients--hosts-seen-on-a-network-using-meraki-or-cisco-dna-center">3.9.c Obtain a list of clients / hosts seen on a network using Meraki or Cisco DNA Center</h4>
+<h2 id="40-application-deployment-and-security-15">4.0 Application Deployment and Security (15%)</h2>
+<h3 id="41-describe-benefits-of-edge-computing">4.1 Describe benefits of edge computing</h3>
+<blockquote>
+<p>Edge computing is a distributed computing paradigm which brings computation and data storage closer to the location where it is needed, to improve response times and save bandwidth. - <a href="https://en.wikipedia.org/wiki/Edge_computing">Wikipedia: Edge Computing</a></p>
+</blockquote>
+<p>If a company website were hosted in Japan, for instance, people in the U.S. might experience delays when using it. But in an edge computing model, the company would have a server in the U.S. that it would direct U.S. people to instead. This is most commonly used in Content Delivery Networks where data is cached at the edge so users can download it faster.</p>
+<h3 id="42-identify-attributes-of-different-application-deployment-models-private-cloud-public-cloud-hybrid-cloud-and-edge">4.2 Identify attributes of different application deployment models (private cloud, public cloud, hybrid cloud, and edge)</h3>
+<p><strong>Private Cloud</strong>: Private Clouds typically use virtualization on physical hardware under direct control of a customer. They get a similar experience to Public Clouds like Amazon Web Services or Microsoft Azure, but keep all of their data on-premises. This can be for a number of reasons such as security, budgets, compliance, etc.</p>
+<p><strong>Public Cloud</strong>: A Public Cloud is a third-party resource for purchasing compute, database, and other services that is publically available over the internet. One of the primary reasons made for using public clouds is the on-demand nature. Allowing a company or individual to pay for only what they need &ndash; or get rid of anything they don&rsquo;t &ndash; whenever they need to.</p>
+<p><strong>Hybrid Cloud</strong>: A mix of both on-premises, private and public cloud infrastructure. A common use for this is cloud bursting, where a customer is able to get resources from the public cloud on demand when their on-premises resources have reached their limit. i.e. during times of high stress such as Black Friday sales. When the load returns to normal the public cloud resources are removed.</p>
+<p><strong>Edge</strong>: Used to bring computing power and storage close to the source of the request</p>
+<h3 id="43-identify-the-attributes-of-these-application-deployment-types">4.3 Identify the attributes of these application deployment types</h3>
+<h4 id="43a-virtual-machines">4.3.a Virtual machines</h4>
+<p>A virtualized operating system sitting on top of a hypervisor. Deployed in public and private clouds such as Microsoft Azure, AWS, and VMware. Many VMs are able to share the same hardware, making more efficient use of physical resources.</p>
+<h4 id="43b-bare-metal">4.3.b Bare metal</h4>
+<p>Installing an operating system directly on the hardware instead of using virtualization; the previously-traditional way that servers were provisioned. Nowadays this is primarily for legacy applications that cannot be virtualized, or for installing a hypervisor (such as VMware) on.</p>
+<h4 id="43c-containers">4.3.c Containers</h4>
+<p>A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings. - <a href="https://www.docker.com/resources/what-container">What is a Container</a></p>
+<p>One benefit of a container is the ability to separate applications into their own &ldquo;contained&rdquo; environments. Which means you could update / redeploy one container without changing or affecting any other containers running on the same host.</p>
+<h3 id="44-describe-components-for-a-cicd-pipeline-in-application-deployments">4.4 Describe components for a CI/CD pipeline in application deployments</h3>
+<h3 id="45-construct-a-python-unit-test">4.5 Construct a Python unit test</h3>
+<h3 id="46-interpret-contents-of-a-dockerfile">4.6 Interpret contents of a Dockerfile</h3>
+<h3 id="47-utilize-docker-images-in-local-developer-environment">4.7 Utilize Docker images in local developer environment</h3>
+<h3 id="48-identify-application-security-issues-related-to-secret-protection-encryption-storage-and-transport-and-data-handling">4.8 Identify application security issues related to secret protection, encryption (storage and transport), and data handling</h3>
+<h3 id="49-explain-how-firewall-dns-load-balancers-and-reverse-proxy-in-application-deployment">4.9 Explain how firewall, DNS, load balancers, and reverse proxy in application deployment</h3>
+<h3 id="410-describe-top-owasp-threats-such-as-xss-sql-injections-and-csrf">4.10 Describe top OWASP threats (such as XSS, SQL injections, and CSRF)</h3>
+<h3 id="411-utilize-bash-commands-file-management-directory-navigation-and-environmental-variables">4.11 Utilize Bash commands (file management, directory navigation, and environmental variables)</h3>
+<h3 id="412-identify-the-principles-of-devops-practices">4.12 Identify the principles of DevOps practices</h3>
+<h2 id="50-infrastructure-and-automation-20">5.0 Infrastructure and Automation (20%)</h2>
+<h3 id="51-describe-the-value-of-model-driven-programmability-for-infrastructure-automation">5.1 Describe the value of model driven programmability for infrastructure automation</h3>
+<h3 id="52-compare-controller-level-to-device-level-management">5.2 Compare controller-level to device-level management</h3>
+<h3 id="53-describe-the-use-and-roles-of-network-simulation-and-test-tools-such-as-virl-and-pyats">5.3 Describe the use and roles of network simulation and test tools (such as VIRL and pyATS)</h3>
+<h3 id="54-describe-the-components-and-benefits-of-cicd-pipeline-in-infrastructure-automation">5.4 Describe the components and benefits of CI/CD pipeline in infrastructure automation</h3>
+<h3 id="55-describe-principles-of-infrastructure-as-code">5.5 Describe principles of infrastructure as code</h3>
+<h3 id="56-describe-the-capabilities-of-automation-tools-such-as-ansible-puppet-chef-and-cisco-nso">5.6 Describe the capabilities of automation tools such as Ansible, Puppet, Chef, and Cisco NSO</h3>
+<h3 id="57-identify-the-workflow-being-automated-by-a-python-script-that-uses-cisco-apis-including-aci-meraki-cisco-dna-center-or-restconf">5.7 Identify the workflow being automated by a Python script that uses Cisco APIs including ACI, Meraki, Cisco DNA Center, or RESTCONF</h3>
+<h3 id="58-identify-the-workflow-being-automated-by-an-ansible-playbook-management-packages-user-management-related-to-services-basic-service-configuration-and-startstop">5.8 Identify the workflow being automated by an Ansible playbook (management packages, user management related to services, basic service configuration, and start/stop)</h3>
+<h3 id="59-identify-the-workflow-being-automated-by-a-bash-script-such-as-file-management-app-install-user-management-directory-navigation">5.9 Identify the workflow being automated by a bash script (such as file management, app install, user management, directory navigation)</h3>
+<h3 id="510-interpret-the-results-of-a-restconf-or-netconf-query">5.10 Interpret the results of a RESTCONF or NETCONF query</h3>
+<h3 id="511-interpret-basic-yang-models">5.11 Interpret basic YANG models</h3>
+<h3 id="512-interpret-a-unified-diff">5.12 Interpret a unified diff</h3>
+<h3 id="513-describe-the-principles-and-benefits-of-a-code-review-process">5.13 Describe the principles and benefits of a code review process</h3>
+<h3 id="514-interpret-sequence-diagram-that-includes-api-calls">5.14 Interpret sequence diagram that includes API calls</h3>
+<h2 id="60-network-fundamentals-15">6.0 Network Fundamentals (15%)</h2>
+<h3 id="61-describe-the-purpose-and-usage-of-mac-addresses-and-vlans">6.1 Describe the purpose and usage of MAC addresses and VLANs</h3>
+<h3 id="62-describe-the-purpose-and-usage-of-ip-addresses-routes-subnet-mask--prefix-and-gateways">6.2 Describe the purpose and usage of IP addresses, routes, subnet mask / prefix, and gateways</h3>
+<h3 id="63-describe-the-function-of-common-networking-components-such-as-switches-routers-firewalls-and-load-balancers">6.3 Describe the function of common networking components (such as switches, routers, firewalls, and load balancers)</h3>
+<h3 id="64-interpret-a-basic-network-topology-diagram-with-elements-such-as-switches-routers-firewalls-load-balancers-and-port-values">6.4 Interpret a basic network topology diagram with elements such as switches, routers, firewalls, load balancers, and port values</h3>
+<h3 id="65-describe-the-function-of-management-data-and-control-planes-in-a-network-device">6.5 Describe the function of management, data, and control planes in a network device</h3>
+<h3 id="66-describe-the-functionality-of-these-ip-services-dhcp-dns-nat-snmp-ntp">6.6 Describe the functionality of these IP Services: DHCP, DNS, NAT, SNMP, NTP</h3>
+<h3 id="67-recognize-common-protocol-port-values-such-as-ssh-telnet-http-https-and-netconf">6.7 Recognize common protocol port values (such as, SSH, Telnet, HTTP, HTTPS, and NETCONF)</h3>
+<h3 id="68-identify-cause-of-application-connectivity-issues-nat-problem-transport-port-blocked-proxy-and-vpn">6.8 Identify cause of application connectivity issues (NAT problem, Transport Port blocked, proxy, and VPN)</h3>
+<h3 id="69-explain-the-impacts-of-network-constraints-on-applications">6.9 Explain the impacts of network constraints on applications</h3>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/cisco">cisco</a></li>
+								
+								<li><a href="/tags/dev">dev</a></li>
+								
+								<li><a href="/tags/python">python</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/FooBartn/HugoSourcery">Sourcery theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>

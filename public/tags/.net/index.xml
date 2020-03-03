@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.net on FOOBARTON</title>
+    <link>https://www.foobarton.com/tags/.net/</link>
+    <description>Recent content in .net on FOOBARTON</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Fri, 21 Feb 2020 23:12:53 -0600</lastBuildDate>
+    
+	<atom:link href="https://www.foobarton.com/tags/.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C# Testing With User Secrets</title>
+      <link>https://www.foobarton.com/posts/testing-with-user-secrets/</link>
+      <pubDate>Fri, 21 Feb 2020 23:12:53 -0600</pubDate>
+      
+      <guid>https://www.foobarton.com/posts/testing-with-user-secrets/</guid>
+      <description>TLDR Use ConfigurationBuilder, AddUserSecrets, and IConfiguration.GetValue(&amp;ldquo;key&amp;rdquo;) to get access to User Secrets from any .Net Core project. No complex procedure required! And minimal scarring!*
+ *These claims have not been evaluated by any legitimate agency. Read at your own risk.
+ Problem &amp;ldquo;Don&amp;rsquo;t push sensitive material to the source code repository.&amp;rdquo;
+Most developers are pretty familiar with this. Obviously, we don&amp;rsquo;t want our precious keys and passwords escaping into The Wild Wild Web and falling prey to some nefarious basement dwelling evil-doer named DarkCLIde.</description>
+    </item>
+    
+  </channel>
+</rss>

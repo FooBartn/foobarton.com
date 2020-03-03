@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>C# For PoSH Devs Part 1 - FOOBARTON</title><link rel="shortcut icon" href=/icons/favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="C# For PoSH Devs Part 1" />
+<meta property="og:description" content="So you&#39;re a PowerShell Wizard.. But have tried C#? Come along for Part 1 of C# For PoSH Devs and give it a whirl!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.foobarton.com/posts/csharp-for-posh-devs-p1/" />
+<meta property="article:published_time" content="2018-05-29T19:00:00+00:00" />
+<meta property="article:modified_time" content="2018-05-29T19:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C# For PoSH Devs Part 1"/>
+<meta name="twitter:description" content="So you&#39;re a PowerShell Wizard.. But have tried C#? Come along for Part 1 of C# For PoSH Devs and give it a whirl!"/>
+<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://www.foobarton.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://www.foobarton.com/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="https://www.foobarton.com/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<div class="top">
+		<h1 class="site-title">
+			<a href="https://www.foobarton.com/">FOOBARTON<span class="site-title-suffix">BLOG</span></a>
+		</h1>
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</div>
+	
+</div>
+
+		<div class="post-header">
+			<h1 class="title">C# For PoSH Devs Part 1</h1>
+			<div class="meta">Posted at &mdash; May 29, 2018</div>
+		</div>
+
+		<div class="markdown">
+			<p><strong>UPDATES</strong></p>
+<ul>
+<li>06.02.2018: Updated Basic Syntax Differences
+<ul>
+<li><a href="https://twitter.com/markekraus">@MarkeKraus</a> recently pointed out that I probably missed a good chance to tell you about the differences in case sensitivity between C# and PowerShell. I added a little information in the syntax section that will hopefully help. Thanks, Mark!</li>
+</ul>
+</li>
+</ul>
+<h2 id="intro">Intro</h2>
+<p>So you&rsquo;re a PowerShell-er, but you&rsquo;re interested in doing something with C#? Awesome! I&rsquo;m here to help. I&rsquo;m not going to go deep in the weeds in this series, but I&rsquo;m going to see if I can get you from point A to point B with brief explanations inbetween. It&rsquo;ll be up to you to take it the rest of the way ^__^</p>
+<p>If you&rsquo;ve never poked around PowerShell classes at all, or you want a much more in depth look at how they work you might want to visit: <a href="https://xainey.github.io/2016/powershell-classes-and-concepts/">Powershell v5 Classes &amp; Concepts by Michael Willis</a>. Most of the concepts carry over to C# very well.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>I&rsquo;m going to be using <a href="https://www.visualstudio.com/vs/community/">Visual Studio</a> (not Code) for this, but you&rsquo;re welcome to use what you please. The C# plugin for Code gets better all the time, and the dotnet new commands can be used to scaffold new projects. Do what works best for you!</p>
+<h2 id="basic-syntax-differences">Basic Syntax Differences</h2>
+<p>Powershell</p>
+<ul>
+<li>Expressions do not need to be closed with a semi-colon.</li>
+<li>Comparisons are two letter combinations: lt, le, gt, ge, -eq</li>
+<li>String interpolation is handled for you inside double quotes:
+<ul>
+<li>&ldquo;My name is $Name&rdquo;</li>
+</ul>
+</li>
+<li>Parameters are added through a param block inside the function
+<ul>
+<li>Parameters do not require a type. They will infer a type based on input.</li>
+</ul>
+</li>
+<li>Case insensitive
+<ul>
+<li>$MyVariable and $myvariable are the same thing</li>
+<li>Get-Process and get-process are the same thing</li>
+</ul>
+</li>
+</ul>
+<p>C#</p>
+<ul>
+<li>Expressions must be closed with a semi-colon.</li>
+<li>Comparisons use math operators: &lt;, &lt;=, &gt;, &gt;=, ==</li>
+<li>String interpolation is slightly more complex:
+<ul>
+<li>$&quot;My name is {name}&rdquo;</li>
+</ul>
+</li>
+<li>Parameters are specified inside the () after a method name
+<ul>
+<li>C# is a strongly typed language, and thus requires a type specification on parameters.</li>
+</ul>
+</li>
+<li>Case sensitive
+<ul>
+<li>MyVariable and myVariable are <strong>not</strong> the same thing.</li>
+<li>GetProcess and getprocess would <strong>not</strong> get you to the same method.
+<ul>
+<li>Technically this is a general naming rule violation, but I&rsquo;m just using it to make a point.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="a-powershell-base">A PowerShell Base</h2>
+<p>So what we&rsquo;re going to do is turn a PowerShell function into a .Net core console app. We&rsquo;re going to sort of breeze over the &ldquo;Class&rdquo; part at the moment. Most of you likely use more functions than classes in your PowerShell, so it&rsquo;s an easier thing to wrap your head around at the start. If you&rsquo;ve used PowerShell classes quite a bit, this should all be very familiar to you.</p>
+<p>PowerShell function:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#719e07">function</span> <span style="color:#b58900">Get-Response</span> {
+    <span style="color:#719e07">param</span>(
+        <span style="color:#268bd2">$Name</span>,
+        <span style="color:#268bd2">$Number</span>
+    )
+
+    <span style="color:#268bd2">$MyName</span> = <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">brAIn</span><span style="color:#2aa198">&#34;</span>
+
+    <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Hello </span><span style="color:#2aa198">$</span><span style="color:#2aa198">Name</span><span style="color:#2aa198">&#34;</span>
+    <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">My name is </span><span style="color:#2aa198">$</span><span style="color:#2aa198">MyName</span><span style="color:#2aa198">&#34;</span>
+    <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">You asked me to count to </span><span style="color:#2aa198">$</span><span style="color:#2aa198">Number. Here goes!</span><span style="color:#2aa198">&#34;</span>
+
+    <span style="color:#719e07">for</span> (<span style="color:#268bd2">$i</span>=0; <span style="color:#268bd2">$i</span> <span style="color:#719e07">-le</span> <span style="color:#268bd2">$Number</span>; <span style="color:#268bd2">$i</span>++) {
+        <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">$</span><span style="color:#2aa198">i</span><span style="color:#2aa198">&#34;</span>
+    }
+}
+</code></pre></div><p>And the output:</p>
+<p><img src="/images/csharp_for_posh_devs/poshfuncbrain.gif" alt=""></p>
+<p>Simple enough, right? We&rsquo;re going to take input parameters Name and Number, and we&rsquo;re going to write some stuff back to the console for the user to read.</p>
+<p>Let&rsquo;s see how we&rsquo;d get a similar result out of C#.</p>
+<h2 id="c-console-app">C# Console App</h2>
+<ul>
+<li>Open Visual Studio, and go to File -&gt; New -&gt; Project (or Ctrl + Shift + N).</li>
+<li>Choose Console App (.NET Core)</li>
+</ul>
+<p><img src="/images/csharp_for_posh_devs/newprojcore.png" alt=""></p>
+<p>Visual Studio will create a new project for you, and will put you on the default Program.cs file that looks like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#719e07">using</span> System;
+
+<span style="color:#719e07">namespace</span> SimplebrAIn
+{
+    <span style="color:#719e07">class</span> <span style="color:#268bd2">Program</span>
+    {
+        <span style="color:#719e07">static</span> <span style="color:#719e07">void</span> Main(<span style="color:#dc322f">string</span>[] args)
+        {
+            Console.WriteLine(<span style="color:#2aa198">&#34;Hello World!&#34;</span>);
+        }
+    }
+}
+</code></pre></div><p>Lets walk through this:</p>
+<h3 id="using-system">using System;</h3>
+<p>Have you ever imported a module in PowerShell? Something like:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#b58900">Import-Module</span> ActiveDirectory
+</code></pre></div><p>That&rsquo;s what the using statement is. It&rsquo;s importing libraries so that you can use their functionality. In this case we need System so that we can use the Console.WriteLine() method. Another option, if we didn&rsquo;t want to put using System at the top, would be modify the code to look like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#719e07">namespace</span> SimplebrAIn
+{
+    <span style="color:#719e07">class</span> <span style="color:#268bd2">Program</span>
+    {
+        <span style="color:#719e07">static</span> <span style="color:#719e07">void</span> Main(<span style="color:#dc322f">string</span>[] args)
+        {
+            System.Console.WriteLine(<span style="color:#2aa198">&#34;Hello World!&#34;</span>);
+        }
+    }
+}
+</code></pre></div><p>Now we&rsquo;re using the system namespace directly to be able to call Console.WriteLine(). If I only ever use the Console.WriteLine() once, and I don&rsquo;t use System for anything else, this might be okay. But if you need to use a library multiple times throughout your code, it&rsquo;s going to be more concise to add the using statement up top.</p>
+<h3 id="namespace-simplebrain">namespace SimplebrAIn</h3>
+<p>This is essentially how your program knows where everything is. The main namespace is the name of your application. If I created a folder in this project named Models and put another cs file in there, its namespace would be SimplebrAIn.Models. And from Program.cs I would need to add a using SimplebrAIn.Models to be able to access the classes in that namespace. We&rsquo;ll get to that another time. Just understand that this is how your application knows where all the pieces to your app exist.</p>
+<h3 id="class-program">class Program</h3>
+<p>Everything in C# starts with a class. Classes are where all the things happen. In this case, our main class is called &ldquo;Program&rdquo;. This is the entry point to our application. This is where, when you press run, the application will begin processing.</p>
+<p>Inside a class you can have private variables, methods, etc. We&rsquo;ll get into constructors and more advanced things later on. For now lets take a look at methods.</p>
+<h3 id="static-void-mainstring-args">static void Main(string[] args)</h3>
+<p>Methods are the real equivalents of our PowerShell functions. In this case the method we start with is called Main. Just as class Program is the class this application will start in, Main is the method it will start with.</p>
+<p>Notice that Main has two keywords proceeding it.</p>
+<ul>
+<li>
+<p>The first is the word <strong>static</strong>. The static keyword on a class means it can&rsquo;t be instantiated as an object. The static keyword on a method means that it can be accessed directly without needing an instance of the class created.</p>
+</li>
+<li>
+<p>The second keyword is <strong>void</strong>. This is the return type of the method. We can return any kind of data: string, int, custom class, etc. Void means that we&rsquo;re returning absolutely nothing. We&rsquo;re just going to do a thing and be done.</p>
+</li>
+</ul>
+<p>Main also takes parameters in the form of an array of strings with a variable name of &ldquo;args&rdquo;.</p>
+<p>Inside main we have our single action: A call to Console.WriteLine() with the argument &ldquo;Hello World!&quot;. Running this as it is now will simply write Hello World! to the console and exit gracefully.</p>
+<h3 id="our-new-method">Our New Method</h3>
+<p>We&rsquo;re going to write another method, equivalent to our PowerShell function, and we&rsquo;re going to call it inside main.</p>
+<p>So we&rsquo;ll need to start with something like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#719e07">namespace</span> SimplebrAIn
+{
+    <span style="color:#719e07">class</span> <span style="color:#268bd2">Program</span>
+    {
+        <span style="color:#719e07">static</span> <span style="color:#719e07">void</span> Main(<span style="color:#dc322f">string</span>[] args)
+        {
+            System.Console.WriteLine(<span style="color:#2aa198">&#34;Hello World!&#34;</span>);
+        }
+
+        <span style="color:#719e07">private</span> <span style="color:#719e07">void</span> GetResponse (<span style="color:#dc322f">string</span> name, <span style="color:#dc322f">int</span> number) 
+        {
+
+        }
+    }
+}
+</code></pre></div><h4 id="access-modifier">Access Modifier</h4>
+<p>The first part of this is the accessor. You need to define where else this piece of code can be seen in your application. A big part of C# (and object oriented coding in general) is encapsulation. You want methods and classes to have one responsibility, and sometimes you don&rsquo;t want them to be seen outside of their own class.</p>
+<p>Public methods can be seen by everything. Private methods can be seen by only the class they&rsquo;re in. There is another one called internal, but we can save that for another time.</p>
+<p>In this particular instance, we are going to use private instead of public because the method we&rsquo;re writing is in the same class as the method calling it. Therefore we can always access this method.</p>
+<h4 id="error">Error</h4>
+<p>Now, if you&rsquo;re following along, you might notice that you have an error in your application. One that reads similar to:</p>
+<p>&ldquo;An object reference is required for non-static field..&rdquo;</p>
+<p>Our Main method is static. As we went over previously, this means it&rsquo;s not an object that can be created. Our GetResponse method is not static. Therefor it would really need to have a new Program() object initialized. We don&rsquo;t want to deal with creating new objects, yet. We just want this method to work. So we have to make it static, just like the Main method.</p>
+<blockquote>
+<p><strong>Note:</strong> There are some very serious limitations with using static methods. In this case we&rsquo;re just making something that works similar to our PowerShell function. In the future we&rsquo;ll look at better ways of writing more complex code.</p>
+</blockquote>
+<p>So our code should now look like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#719e07">private</span> <span style="color:#719e07">static</span> <span style="color:#719e07">void</span> GetResponse(<span style="color:#dc322f">string</span> name, <span style="color:#dc322f">int</span> number)
+{
+
+}
+</code></pre></div><p>Compared to:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#719e07">function</span> <span style="color:#b58900">Get-Response</span> {
+    <span style="color:#719e07">param</span>(
+        <span style="color:#268bd2">$Name</span>,
+        <span style="color:#268bd2">$Number</span>
+    )
+
+}
+</code></pre></div><h4 id="return-type">Return type</h4>
+<p>We are using a return type of Void. Just like the default Main method, we&rsquo;re only going to write to the console. We&rsquo;re not returning any data.</p>
+<h4 id="input-parameters">Input parameters</h4>
+<p>In our PowerShell code we had a param() block that we set our parameters in. In C# we add them right after the method name. As C# is strongly typed, you are required to put the type of the variable before its name. Although PowerShell allows you to do so, it is not a requirement.</p>
+<h2 id="add-working-code">Add Working Code</h2>
+<p>Ok! Hopefully you&rsquo;re still awake. We&rsquo;re getting to the part of our code that does the real &ldquo;work&rdquo;.</p>
+<p>That part in PowerShell looks like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">    <span style="color:#268bd2">$MyName</span> = <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">brAIn</span><span style="color:#2aa198">&#34;</span>
+
+    <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">Hello </span><span style="color:#2aa198">$</span><span style="color:#2aa198">Name</span><span style="color:#2aa198">&#34;</span>
+    <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">My name is </span><span style="color:#2aa198">$</span><span style="color:#2aa198">MyName</span><span style="color:#2aa198">&#34;</span>
+    <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">You asked me to count to </span><span style="color:#2aa198">$</span><span style="color:#2aa198">Number. Here goes!</span><span style="color:#2aa198">&#34;</span>
+
+    <span style="color:#719e07">for</span> (<span style="color:#268bd2">$i</span>=0; <span style="color:#268bd2">$i</span> <span style="color:#719e07">-le</span> <span style="color:#268bd2">$Number</span>; <span style="color:#268bd2">$i</span>++) {
+        <span style="color:#2aa198">&#34;</span><span style="color:#2aa198">$</span><span style="color:#2aa198">i</span><span style="color:#2aa198">&#34;</span>
+    }
+</code></pre></div><h3 id="variables">Variables</h3>
+<p>In PowerShell, variable declarations start with a $. C# variables either start with var or their specific type. So the equivalent of the first line in C# would be:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#dc322f">var</span> myName = <span style="color:#2aa198">&#34;brAIn&#34;</span>;
+</code></pre></div><blockquote>
+<p><strong>General Guideline:</strong> In C# your private variables start with a lowercase letter. Public properties start with an uppercase. We&rsquo;ll talk more about this kind of thing another time, but, if you&rsquo;re using the latest version of Visual Studio, it should catch quite a few of them for you.</p>
+</blockquote>
+<h3 id="string-variable-interpolation">String Variable Interpolation</h3>
+<p>In PowerShell string interpolation is very simple. As long as you use double quotes, you just put the variable in it as normal and it will evaluate it for you. C# is different. It requires you to prefix the string with a $ and put expressions or variables inside of curly braces like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#2aa198">$&#34;Hello {name}&#34;</span>
+</code></pre></div><h3 id="ending-your-statements">Ending your statements</h3>
+<p>In PowerShell, you just need to put each expression on a different line. You don&rsquo;t need to close the statements with any symbol. In C# you have to close them with a semi-colon.</p>
+<h3 id="writing-to-console">Writing To Console</h3>
+<p>And you&rsquo;ll need to actually tell it to write out to the console, instead of just surrounding something in quotes and leaving it to PowerShell to know what you want.</p>
+<p>So the first part of our method will need to look like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#dc322f">var</span> myName = <span style="color:#2aa198">&#34;brAIn&#34;</span>;
+
+    Console.WriteLine(<span style="color:#2aa198">$&#34;Hello {name}&#34;</span>);
+    Console.WriteLine(<span style="color:#2aa198">$&#34;My name is {myName}&#34;</span>);
+    Console.WriteLine(<span style="color:#2aa198">$&#34;You asked me to count to {number}. Here goes!&#34;</span>);
+</code></pre></div><h3 id="the-for-loop">The For Loop</h3>
+<p>The loop doesn&rsquo;t change from PowerShell to C#, with the exception of our operator. In PowerShell our comparison operators are a combination of two letters, such as -le for &ldquo;less than or equal to&rdquo;. In C# we use &lt;= to refer to the same type of comparison.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#719e07">for</span> (<span style="color:#dc322f">int</span> i = <span style="color:#2aa198">0</span>; i &lt;= number; i++)
+{
+    Console.WriteLine(i);
+}
+</code></pre></div><h3 id="complete-method-code">Complete Method Code</h3>
+<p>Our new method now looks like this:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#719e07">private</span> <span style="color:#719e07">static</span> <span style="color:#719e07">void</span> GetResponse(<span style="color:#dc322f">string</span> name, <span style="color:#dc322f">int</span> number)
+{
+    <span style="color:#dc322f">var</span> myName = <span style="color:#2aa198">&#34;brAIn&#34;</span>;
+    Console.WriteLine(<span style="color:#2aa198">$&#34;Hello {name}&#34;</span>);
+    Console.WriteLine(<span style="color:#2aa198">$&#34;My name is {myName}&#34;</span>);
+    Console.WriteLine(<span style="color:#2aa198">$&#34;You asked me to count to {number}. Here goes!&#34;</span>);
+
+    <span style="color:#719e07">for</span> (<span style="color:#dc322f">int</span> i = <span style="color:#2aa198">0</span>; i &lt; number; i++)
+    {
+        Console.WriteLine(i);
+    }
+}
+</code></pre></div><h2 id="completing-the-app">Completing The App</h2>
+<p>Now we need to call it from our Main method. We&rsquo;ll get rid of the</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Console.WriteLine(<span style="color:#2aa198">&#34;Hello World!&#34;</span>);
+</code></pre></div><p>call and replace it with a call to our new method.</p>
+<h3 id="main-method-input">Main Method Input</h3>
+<p>Remember our main method only takes an array of string input?</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#719e07">static</span> <span style="color:#719e07">void</span> Main(<span style="color:#dc322f">string</span>[] args)
+</code></pre></div><p>From the console that&rsquo;s all it is going to see. So we&rsquo;ll need to do a little conversion. We&rsquo;ll expect users to put in a name as the first argument, and a number as the second argument.</p>
+<p>So we&rsquo;ll look for args[0] and args[1].</p>
+<h4 id="converting-a-string-to-a-number">Converting a string to a number</h4>
+<p>We&rsquo;re going to use a static method of the int class to convert our second argument to a number.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#dc322f">int</span>.TryParse(args[<span style="color:#2aa198">1</span>], <span style="color:#719e07">out</span> <span style="color:#dc322f">int</span> number);
+</code></pre></div><p>This will look at the second value in args, see if it can turn it into a whole number, and then output that into a variable named &ldquo;number&rdquo;.</p>
+<h4 id="our-method-call">Our Method Call</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">GetResponse(args[<span style="color:#2aa198">0</span>], number);
+</code></pre></div><h2 id="final-code">Final Code</h2>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#719e07">using</span> System;
+
+<span style="color:#719e07">namespace</span> SimplebrAIn
+{
+    <span style="color:#719e07">class</span> <span style="color:#268bd2">Program</span>
+    {
+        <span style="color:#719e07">static</span> <span style="color:#719e07">void</span> Main(<span style="color:#dc322f">string</span>[] args)
+        {
+            <span style="color:#dc322f">int</span>.TryParse(args[<span style="color:#2aa198">1</span>], <span style="color:#719e07">out</span> <span style="color:#dc322f">int</span> number);
+
+            GetResponse(args[<span style="color:#2aa198">0</span>], number);
+        }
+
+        <span style="color:#719e07">private</span> <span style="color:#719e07">static</span> <span style="color:#719e07">void</span> GetResponse(<span style="color:#dc322f">string</span> name, <span style="color:#dc322f">int</span> number)
+        {
+            <span style="color:#dc322f">var</span> myName = <span style="color:#2aa198">&#34;brAIn&#34;</span>;
+            Console.WriteLine(<span style="color:#2aa198">$&#34;Hello {name}&#34;</span>);
+            Console.WriteLine(<span style="color:#2aa198">$&#34;My name is {myName}&#34;</span>);
+            Console.WriteLine(<span style="color:#2aa198">$&#34;You asked me to count to {number}. Here goes!&#34;</span>);
+
+            <span style="color:#719e07">for</span> (<span style="color:#dc322f">int</span> i = <span style="color:#2aa198">0</span>; i &lt;= number; i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+</code></pre></div><h2 id="running">Running</h2>
+<p>So a quick way we can run this is by using one of the dotnet commands. We need to do so from within the project directory, though. That would be the directory where your .csproj file is located.</p>
+<p>Once there you can use the &ldquo;dotnet run&rdquo; command, plus arguments, to compile and run our app on the fly.</p>
+<p>In our case I&rsquo;m going to use</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">dotnet run Bob 25
+</code></pre></div><p>And here&rsquo;s the output:</p>
+<p><img src="/images/csharp_for_posh_devs/dotnetrunbrain.gif" alt=""></p>
+<h2 id="ready-for-world-domination">Ready For World Domination!</h2>
+<p>Maybe not quite. But hey, you now have a working C# console application ^__^</p>
+<p>Stay tuned for the next part in the series. We&rsquo;re going to look at some ways we can change this code to be more object oriented. Until then, happy coding and happy days to you all!</p>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="/tags/powershell">powershell</a></li>
+								
+								<li><a href="/tags/c">c#</a></li>
+								
+								<li><a href="/tags/dev">dev</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/FooBartn/HugoSourcery">Sourcery theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script>feather.replace()</script>
+</body>
+</html>
